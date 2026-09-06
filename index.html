@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CR Volleyball</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7f9;
+      color: #1f2933;
+    }
+
+    header {
+      background: linear-gradient(135deg, #15324a, #1f6f78);
+      color: white;
+      padding: 75px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 44px;
+    }
+
+    header .subtitle {
+      margin: 0 auto;
+      max-width: 800px;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    .header-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 22px;
+      background: white;
+      color: #15324a;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 45px 20px 70px;
+    }
+
+    section {
+      margin-bottom: 55px;
+    }
+
+    h2 {
+      color: #15324a;
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      color: #1f6f78;
+    }
+
+    .intro {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .highlight {
+      background: #e9f3f4;
+      border-left: 5px solid #1f6f78;
+      padding: 22px;
+      border-radius: 8px;
+      margin-top: 25px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .clinics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .clinic-card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .clinic-card h3 {
+      margin-top: 0;
+    }
+
+    .final-clinic {
+      background: #15324a;
+      color: white;
+    }
+
+    .final-clinic h3 {
+      color: white;
+    }
+
+    .interest-box {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .club-box {
+      background: #eaf1f5;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: white;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #1f6f78;
+      outline-offset: 1px;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    button {
+      border: 0;
+      background: #1f6f78;
+      color: white;
+      padding: 14px;
+      font-size: 17px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover:not(:disabled) {
+      background: #195d64;
+    }
+
+    button:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    .small-text {
+      color: #5b6770;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Meldinger */
+
+    .form-message {
+      display: none;
+      padding: 16px 18px;
+      border-radius: 9px;
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .form-message.success {
+      display: block;
+      background: #e8f7ee;
+      border: 1px solid #77c493;
+      color: #175b31;
+    }
+
+    .form-message.error {
+      display: block;
+      background: #fdecec;
+      border: 1px solid #e49a9a;
+      color: #8a1f1f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      background: #15324a;
+      color: white;
+    }
+
+    @media (max-width: 650px) {
+      header {
+        padding: 50px 18px;
+      }
+
+      header h1 {
+        font-size: 32px;
+      }
+
+      header .subtitle {
+        font-size: 18px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .interest-box {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <h1>CR Volleyball</h1>
+
+  <p class="subtitle">
+    Utviklingssamlinger for ivrige volleyballspillere
+    i videregående skolealder i Region Øst.
+  </p>
+
+  <div class="header-buttons">
+
+    <a class="cta-button" href="#interesse">
+      Jeg er interessert
+    </a>
+
+    <a class="cta-button secondary" href="#klubb">
+      Vi vil arrangere en samling
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <!-- IDEEN -->
+
+  <section>
+
+    <h2>Vi ønsker å videreføre regionslagideen</h2>
+
+    <p class="intro">
+      Mange spillere har gjennom regionslag og andre regionale
+      tiltak opplevd verdien av å trene sammen med andre ivrige
+      utøvere på tvers av klubbgrenser.
+    </p>
+
+    <p class="intro">
+      Med CR Volleyball ønsker vi å videreføre denne ideen.
+      Målet er å samle motiverte volleyballspillere i videregående
+      skolealder fra klubber i Region Øst til utviklingssamlinger
+      gjennom sesongen.
+    </p>
+
+    <p class="intro">
+      Samlingene skal være et supplement til den ordinære klubbtreningen.
+      Vi ønsker ikke å etablere et nytt lag eller konkurrere med klubbene,
+      men å skape en ekstra utviklingsarena for spillere som ønsker
+      å trene mer og møte andre utøvere med samme motivasjon.
+    </p>
+
+    <div class="highlight">
+
+      <strong>På tvers av klubbene – sammen om utvikling.</strong>
+
+      <br><br>
+
+      Ambisjonen er å skape et miljø der ivrige ungdommer
+      kan møtes flere ganger gjennom sesongen,
+      lære av hverandre og utvikle seg sammen.
+
+    </div>
+
+  </section>
+
+
+  <!-- SAMLINGER -->
+
+  <section>
+
+    <h2>Samlinger gjennom sesongen</h2>
+
+    <p class="intro">
+      Samlingene vil ha ulike temaer og fokusområder.
+      Innholdet kan variere gjennom sesongen basert på
+      spillernes behov og hvilke trenere som deltar.
+    </p>
+
+    <div class="clinics">
+
+      <div class="clinic-card">
+        <h3>Attack Clinic</h3>
+        <p>
+          Tilløp, timing, sats,
+          slagteknikk og ulike angrepsvalg.
+        </p>
+      </div>
+
+
+      <div class="clinic-card">
+        <h3>Block Clinic</h3>
+        <p>
+          Fotarbeid, timing,
+          håndstilling og posisjonering.
+        </p>
+      </div>
+
+
+      <div class="clinic-card">
+        <h3>Defense Clinic</h3>
+        <p>
+          Bevegelse, lesing,
+          forsvarsteknikk og posisjonering.
+        </p>
+      </div>
+
+
+      <div class="clinic-card">
+        <h3>Setter Clinic</h3>
+        <p>
+          Fotarbeid, teknikk,
+          tempo og beslutninger.
+        </p>
+      </div>
+
+
+      <div class="clinic-card">
+        <h3>Serve & Receive</h3>
+        <p>
+          Serve, mottak,
+          kommunikasjon og organisering.
+        </p>
+      </div>
+
+
+      <div class="clinic-card final-clinic">
+
+        <h3>Season Final – Samspillsclinic</h3>
+
+        <p>
+          Mot slutten av sesongen ønsker vi å samle spillerne
+          til en større samspillsclinic.
+        </p>
+
+        <p>
+          Her bruker vi ferdighetene fra sesongens samlinger
+          i spill og avslutter med en turnering.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTERESSE SPILLER -->
+
+  <section id="interesse">
+
+    <div class="interest-box">
+
+      <h2>Interessert i å delta?</h2>
+
+      <p>
+        Registrer deg dersom du ønsker å få informasjon
+        når nye CR Volleyball-samlinger i Region Øst blir planlagt.
+      </p>
+
+      <p class="small-text">
+        Registreringen er ikke bindende og er ikke en påmelding
+        til en bestemt samling.
+      </p>
+
+
+      <!-- MELDING SPILLER -->
+
+      <div
+        id="playerMessage"
+        class="form-message"
+        aria-live="polite">
+      </div>
+
+
+      <form id="interestForm">
+
+        <div class="form-row">
+
+          <div>
+
+            <label for="firstName">
+              Fornavn *
+            </label>
+
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="lastName">
+              Etternavn *
+            </label>
+
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              required
+            />
+
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div>
+
+            <label for="birthYear">
+              Fødselsår *
+            </label>
+
+            <input
+              id="birthYear"
+              name="birthYear"
+              type="number"
+              min="2005"
+              max="2013"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="club">
+              Klubb
+            </label>
+
+            <input
+              id="club"
+              name="club"
+              type="text"
+            />
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <label for="position">
+            Posisjon
+          </label>
+
+          <select
+            id="position"
+            name="position">
+
+            <option value="">
+              Velg posisjon
+            </option>
+
+            <option>Opplegger</option>
+            <option>Kant</option>
+            <option>Diagonal</option>
+            <option>Midt</option>
+            <option>Libero</option>
+            <option>Flere posisjoner / vet ikke</option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div>
+
+            <label for="email">
+              E-post *
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="phone">
+              Telefon
+            </label>
+
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+            />
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <label for="comments">
+            Kommentar
+          </label>
+
+          <textarea
+            id="comments"
+            name="comments"
+            placeholder="Eventuelle ønsker, nivå eller kommentarer"
+          ></textarea>
+
+        </div>
+
+
+        <div class="checkbox-row">
+
+          <input
+            id="consent"
+            name="consent"
+            type="checkbox"
+            required
+          />
+
+<label for="consent">
+  Jeg ønsker informasjon om kommende CR Volleyball-samlinger
+  og samtykker til å bli kontaktet på e-post eller SMS.
+  Jeg har lest
+  <a href="personvern.html" target="_blank">
+    personvernerklæringen
+  </a>.
+</label>
+
+        </div>
+
+
+        <button type="submit">
+          Registrer interesse
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- KLUBB -->
+
+  <section id="klubb">
+
+    <div class="interest-box club-box">
+
+      <h2>Kan klubben deres være vertskap?</h2>
+
+      <p class="intro">
+        Vi ønsker å gjennomføre samlingene
+        i samarbeid med volleyballklubber i Region Øst.
+      </p>
+
+      <p>
+        Dersom klubben har en treningstid eller halltid
+        som kan stilles til disposisjon for en utviklingssamling,
+        ønsker vi gjerne å høre fra dere.
+      </p>
+
+      <p>
+        Det kan for eksempel være en ordinær treningstid
+        klubben ønsker å åpne for spillere fra flere klubber,
+        eller tilgjengelig halltid som kan benyttes
+        til en regional utviklingssamling.
+      </p>
+
+      <p class="small-text">
+        Registreringen er kun en interessehenvendelse.
+        Vi tar kontakt for å diskutere dato,
+        tidspunkt og praktisk gjennomføring.
+      </p>
+
+
+      <!-- MELDING KLUBB -->
+
+      <div
+        id="clubMessage"
+        class="form-message"
+        aria-live="polite">
+      </div>
+
+
+      <form id="clubForm">
+
+        <div class="form-row">
+
+          <div>
+
+            <label for="clubName">
+              Klubb *
+            </label>
+
+            <input
+              id="clubName"
+              name="clubName"
+              type="text"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="contactName">
+              Kontaktperson *
+            </label>
+
+            <input
+              id="contactName"
+              name="contactName"
+              type="text"
+              required
+            />
+
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div>
+
+            <label for="clubEmail">
+              E-post *
+            </label>
+
+            <input
+              id="clubEmail"
+              name="clubEmail"
+              type="email"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="clubPhone">
+              Telefon
+            </label>
+
+            <input
+              id="clubPhone"
+              name="clubPhone"
+              type="tel"
+            />
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <label for="hallName">
+            Hall / treningssted
+          </label>
+
+          <input
+            id="hallName"
+            name="hallName"
+            type="text"
+          />
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div>
+
+            <label for="weekday">
+              Aktuell ukedag
+            </label>
+
+            <select
+              id="weekday"
+              name="weekday">
+
+              <option value="">
+                Velg
+              </option>
+
+              <option>Mandag</option>
+              <option>Tirsdag</option>
+              <option>Onsdag</option>
+              <option>Torsdag</option>
+              <option>Fredag</option>
+              <option>Lørdag</option>
+              <option>Søndag</option>
+
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label for="availableTime">
+              Tidspunkt
+            </label>
+
+            <input
+              id="availableTime"
+              name="availableTime"
+              type="text"
+              placeholder="F.eks. 18:00–20:00"
+            />
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <label for="clubComments">
+            Kommentar
+          </label>
+
+          <textarea
+            id="clubComments"
+            name="clubComments"
+            placeholder="Fortell gjerne litt om tilgjengelig treningstid eller andre muligheter"
+          ></textarea>
+
+        </div>
+
+
+        <div class="checkbox-row">
+
+          <input
+            id="clubConsent"
+            name="clubConsent"
+            type="checkbox"
+            required
+          />
+
+<label for="clubConsent">
+  Jeg samtykker til at CR Development kan kontakte meg
+  om muligheten for å arrangere en CR Volleyball-samling.
+  Jeg har lest
+  <a href="personvern.html" target="_blank">
+    personvernerklæringen
+  </a>.
+</label>
+
+        </div>
+
+
+        <button type="submit">
+          Registrer klubbens interesse
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  CR Development – Roness
+
+  <br>
+
+  <span style="font-size:13px;">
+    CR Volleyball
+  </span>
+
+  <br><br>
+
+  <a
+    href="personvern.html"
+    style="color:white; font-size:13px;"
+  >
+    Personvern
+  </a>
+
+</footer>
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+  // =========================================================
+  // SUPABASE
+  // =========================================================
+
+  const SUPABASE_URL =
+    "https://lannjcyihlyvvzecefrs.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_MqGWDF3WgXqnuRyY50Y_5g_xHYzcYtn";
+
+
+  const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+  // =========================================================
+  // HJELPEFUNKSJON FOR MELDINGER
+  // =========================================================
+
+  function showMessage(element, type, text) {
+
+    element.className = "form-message " + type;
+
+    element.textContent = text;
+
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }
+
+
+  function clearMessage(element) {
+
+    element.className = "form-message";
+
+    element.textContent = "";
+
+  }
+
+
+
+  // =========================================================
+  // SPILLERREGISTRERING
+  // =========================================================
+
+  document
+    .getElementById("interestForm")
+    .addEventListener("submit", async function(event) {
+
+      event.preventDefault();
+
+
+      const form = event.target;
+
+      const button =
+        form.querySelector("button[type='submit']");
+
+      const message =
+        document.getElementById("playerMessage");
+
+
+      clearMessage(message);
+
+
+      button.disabled = true;
+
+      button.textContent = "Registrerer...";
+
+
+      const registration = {
+
+        first_name:
+          document
+            .getElementById("firstName")
+            .value
+            .trim(),
+
+        last_name:
+          document
+            .getElementById("lastName")
+            .value
+            .trim(),
+
+        birth_year:
+          Number(
+            document
+              .getElementById("birthYear")
+              .value
+          ),
+
+        club:
+          document
+            .getElementById("club")
+            .value
+            .trim() || null,
+
+        position:
+          document
+            .getElementById("position")
+            .value || null,
+
+        email:
+          document
+            .getElementById("email")
+            .value
+            .trim(),
+
+        phone:
+          document
+            .getElementById("phone")
+            .value
+            .trim() || null,
+
+        comments:
+          document
+            .getElementById("comments")
+            .value
+            .trim() || null,
+
+        consent_to_contact:
+          document
+            .getElementById("consent")
+            .checked,
+
+        privacy_accepted_at:
+          new Date().toISOString()
+
+      };
+
+
+      const { error } =
+        await supabaseClient
+          .from("crv_interests")
+          .insert(registration);
+
+
+      if (error) {
+
+        console.error(
+          "Feil ved spillerregistrering:",
+          error
+        );
+
+
+        showMessage(
+          message,
+          "error",
+          "Vi klarte dessverre ikke å registrere interessen akkurat nå. Prøv igjen om litt."
+        );
+
+
+        button.disabled = false;
+
+        button.textContent =
+          "Registrer interesse";
+
+        return;
+
+      }
+
+
+      form.reset();
+
+
+      showMessage(
+        message,
+        "success",
+        "Takk! Interessen din er registrert. Du får beskjed når nye CR Volleyball-samlinger planlegges."
+      );
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Registrer interesse";
+
+    });
+
+
+
+  // =========================================================
+  // KLUBBREGISTRERING
+  // =========================================================
+
+  document
+    .getElementById("clubForm")
+    .addEventListener("submit", async function(event) {
+
+      event.preventDefault();
+
+
+      const form = event.target;
+
+      const button =
+        form.querySelector("button[type='submit']");
+
+      const message =
+        document.getElementById("clubMessage");
+
+
+      clearMessage(message);
+
+
+      button.disabled = true;
+
+      button.textContent = "Registrerer...";
+
+
+      const registration = {
+
+        club_name:
+          document
+            .getElementById("clubName")
+            .value
+            .trim(),
+
+        contact_name:
+          document
+            .getElementById("contactName")
+            .value
+            .trim(),
+
+        email:
+          document
+            .getElementById("clubEmail")
+            .value
+            .trim(),
+
+        phone:
+          document
+            .getElementById("clubPhone")
+            .value
+            .trim() || null,
+
+        hall_name:
+          document
+            .getElementById("hallName")
+            .value
+            .trim() || null,
+
+        weekday:
+          document
+            .getElementById("weekday")
+            .value || null,
+
+        available_time:
+          document
+            .getElementById("availableTime")
+            .value
+            .trim() || null,
+
+        comments:
+          document
+            .getElementById("clubComments")
+            .value
+            .trim() || null,
+
+        consent_to_contact:
+          document
+            .getElementById("clubConsent")
+            .checked
+
+      };
+
+
+      const { error } =
+        await supabaseClient
+          .from("crv_club_hosts")
+          .insert(registration);
+
+
+      if (error) {
+
+        console.error(
+          "Feil ved klubbregistrering:",
+          error
+        );
+
+
+        showMessage(
+          message,
+          "error",
+          "Vi klarte dessverre ikke å registrere klubbens interesse akkurat nå. Prøv igjen om litt."
+        );
+
+
+        button.disabled = false;
+
+        button.textContent =
+          "Registrer klubbens interesse";
+
+        return;
+
+      }
+
+
+      form.reset();
+
+
+      showMessage(
+        message,
+        "success",
+        "Takk! Klubbens interesse er registrert. Vi tar kontakt for å diskutere muligheten for å arrangere en CR Volleyball-samling."
+      );
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Registrer klubbens interesse";
+
+    });
+
+</script>
+
+</body>
+</html>
