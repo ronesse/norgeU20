@@ -1,1208 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>CR Volleyball</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f7f9;
-      color: #1f2933;
-    }
-
-    header {
-      background: linear-gradient(135deg, #15324a, #1f6f78);
-      color: white;
-      padding: 75px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0 0 12px;
-      font-size: 44px;
-    }
-
-    header .subtitle {
-      margin: 0 auto;
-      max-width: 800px;
-      font-size: 21px;
-      line-height: 1.5;
-    }
-
-    .header-buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 14px 22px;
-      background: white;
-      color: #15324a;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-    }
-
-    .cta-button.secondary {
-      background: transparent;
-      color: white;
-      border: 2px solid white;
-    }
-
-    main {
-      max-width: 1050px;
-      margin: auto;
-      padding: 45px 20px 70px;
-    }
-
-    section {
-      margin-bottom: 55px;
-    }
-
-    h2 {
-      color: #15324a;
-      font-size: 30px;
-      margin-bottom: 18px;
-    }
-
-    h3 {
-      color: #1f6f78;
-    }
-
-    .intro {
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .highlight {
-      background: #e9f3f4;
-      border-left: 5px solid #1f6f78;
-      padding: 22px;
-      border-radius: 8px;
-      margin-top: 25px;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .clinics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-
-    .clinic-card {
-      background: white;
-      padding: 22px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
-
-    .clinic-card h3 {
-      margin-top: 0;
-    }
-
-    .final-clinic {
-      background: #15324a;
-      color: white;
-    }
-
-    .final-clinic h3 {
-      color: white;
-    }
-
-    .interest-box {
-      background: white;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    }
-
-    .club-box {
-      background: #eaf1f5;
-    }
-
-    form {
-      display: grid;
-      gap: 16px;
-    }
-
-    label {
-      font-weight: bold;
-      margin-bottom: 5px;
-      display: block;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: white;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: 2px solid #1f6f78;
-      outline-offset: 1px;
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .checkbox-row {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-
-    .checkbox-row input {
-      width: auto;
-      margin-top: 4px;
-    }
-
-    button {
-      border: 0;
-      background: #1f6f78;
-      color: white;
-      padding: 14px;
-      font-size: 17px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover:not(:disabled) {
-      background: #195d64;
-    }
-
-    button:disabled {
-      opacity: 0.65;
-      cursor: wait;
-    }
-
-    .small-text {
-      color: #5b6770;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    /* Meldinger */
-
-    .form-message {
-      display: none;
-      padding: 16px 18px;
-      border-radius: 9px;
-      font-size: 16px;
-      line-height: 1.5;
-      font-weight: 500;
-    }
-
-    .form-message.success {
-      display: block;
-      background: #e8f7ee;
-      border: 1px solid #77c493;
-      color: #175b31;
-    }
-
-    .form-message.error {
-      display: block;
-      background: #fdecec;
-      border: 1px solid #e49a9a;
-      color: #8a1f1f;
-    }
-
-    footer {
-      text-align: center;
-      padding: 28px;
-      background: #15324a;
-      color: white;
-    }
-
-    @media (max-width: 650px) {
-      header {
-        padding: 50px 18px;
-      }
-
-      header h1 {
-        font-size: 32px;
-      }
-
-      header .subtitle {
-        font-size: 18px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .interest-box {
-        padding: 22px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Norge U20 – Warszawa 2026</title>
+<style>
+:root{--navy:#071a2f;--navy2:#0b2b4d;--blue:#0c5ca8;--red:#d71920;--bg:#f4f7fb;--card:#fff;--text:#172233;--muted:#6b7687;--line:#dde5ef;--ok:#16835d;--warn:#aa6500;--shadow:0 10px 30px rgba(15,35,60,.08);--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit}.hero{background:linear-gradient(140deg,var(--navy),var(--navy2));color:#fff;padding:20px 18px 26px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-90px;top:-100px;background:rgba(255,255,255,.06)}
+.hero-inner{max-width:1180px;margin:auto}.topline{display:flex;align-items:center;gap:12px}.flag{width:52px;height:36px;border-radius:8px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.25);display:grid;background:#ba0c2f;position:relative}.flag:before{content:"";position:absolute;left:15px;top:0;width:10px;height:100%;background:#fff}.flag:after{content:"";position:absolute;left:0;top:13px;width:100%;height:10px;background:#fff}.flag span:before{content:"";position:absolute;left:18px;top:0;width:4px;height:100%;background:#00205b;z-index:2}.flag span:after{content:"";position:absolute;left:0;top:16px;width:100%;height:4px;background:#00205b;z-index:2}
+.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;opacity:.72;font-weight:800}.hero h1{font-size:clamp(2rem,6vw,4rem);line-height:.95;margin:18px 0 10px;letter-spacing:-.045em}.hero p{max-width:700px;margin:0;opacity:.82;font-size:1.02rem}.tripmeta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);padding:9px 12px;border-radius:999px;font-size:.86rem;font-weight:700}
+.nav-wrap{position:sticky;top:0;z-index:20;background:rgba(244,247,251,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(221,229,239,.9)}.nav{max-width:1180px;margin:auto;display:flex;gap:7px;padding:10px 14px;overflow:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav button{white-space:nowrap;border:0;background:transparent;padding:10px 13px;border-radius:12px;font-weight:800;color:#526073;cursor:pointer}.nav button.active{background:var(--navy);color:#fff}
+main{max-width:1180px;margin:auto;padding:20px 14px 50px}.view{display:none}.view.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin:5px 2px 18px}.section-head h2{font-size:1.75rem;margin:0;letter-spacing:-.03em}.section-head p{margin:4px 0 0;color:var(--muted)}
+.notice{border:1px solid #f1d19b;background:#fff8ea;color:#7a4a00;border-radius:16px;padding:13px 15px;margin-bottom:16px;font-size:.92rem}.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.card h3{margin:0 0 5px;font-size:1.05rem}.muted{color:var(--muted)}.small{font-size:.86rem}.eyebrow{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:var(--blue)}
+.day{display:grid;grid-template-columns:92px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--line)}.day:first-of-type{border-top:0;padding-top:2px}.datebox{font-weight:900;color:var(--navy)}.datebox .dow{font-size:.76rem;text-transform:uppercase;color:var(--muted);letter-spacing:.09em}.datebox .num{font-size:1.65rem;line-height:1.1}.event{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:10px 0}.time{font-weight:900;color:var(--navy)}.event-title{font-weight:850}.tag{display:inline-block;font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;border-radius:999px;padding:4px 7px;margin-left:6px;vertical-align:1px}.tent{background:#fff1d7;color:#8a5100}.confirmed{background:#e3f6ed;color:#0f6b4b}.match{background:#e7f0fb;color:#084d8f}.travel{background:#eeeafc;color:#5a38a0}
+.flight{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:15px 0;border-top:1px solid var(--line)}.flight:first-of-type{border-top:0}.route{font-weight:900}.route span{font-weight:600;color:var(--muted)}.bigtime{font-size:1.18rem;font-weight:900;text-align:right}.names{margin-top:8px;display:flex;flex-wrap:wrap;gap:7px}.namechip{padding:7px 9px;border:1px solid var(--line);border-radius:10px;background:#f8fafc;font-size:.84rem;font-weight:700}
+.roster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.person{padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}.person strong{display:block}.person span{font-size:.8rem;color:var(--muted)}
+.location-card{padding:0;overflow:hidden}.loc-top{padding:18px}.loc-icon{width:42px;height:42px;border-radius:13px;background:#e8f1fb;display:grid;place-items:center;font-size:1.2rem;margin-bottom:14px}.loc-address{color:var(--muted);margin-top:5px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:12px;padding:10px 12px;font-weight:850;font-size:.88rem;border:1px solid var(--line);background:#fff}.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}.loc-info{border-top:1px solid var(--line);padding:14px 18px;background:#fafcff;font-size:.86rem;color:#586578}
+.transport-card .mode{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid var(--line)}.transport-card .mode:first-of-type{border-top:0}.price{font-weight:900;white-space:nowrap}.good{color:var(--ok)}.schedule-table{width:100%;border-collapse:collapse}.schedule-table th,.schedule-table td{text-align:left;border-bottom:1px solid var(--line);padding:11px 8px;font-size:.88rem}.schedule-table th{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}.schedule-table tr:last-child td{border-bottom:0}.court{font-weight:900;color:var(--blue)}
+.footer{max-width:1180px;margin:0 auto 30px;padding:0 14px;color:var(--muted);font-size:.8rem;text-align:center}
+@media(max-width:760px){.hero{padding-top:16px}.g2,.g3,.roster{grid-template-columns:1fr}.section-head{display:block}.day{grid-template-columns:72px 1fr}.event{grid-template-columns:58px 1fr}.flight{align-items:flex-start;flex-direction:column}.bigtime{text-align:left}.card{padding:15px;border-radius:18px}.schedule-scroll{overflow:auto}.schedule-table{min-width:620px}}
+</style>
 </head>
-
 <body>
-
-<header>
-
-  <h1>CR Volleyball</h1>
-
-  <p class="subtitle">
-    Utviklingssamlinger for ivrige volleyballspillere
-    i videregående skolealder i Region Øst.
-  </p>
-
-  <div class="header-buttons">
-
-    <a class="cta-button" href="#interesse">
-      Jeg er interessert
-    </a>
-
-    <a class="cta-button secondary" href="#klubb">
-      Vi vil arrangere en samling
-    </a>
-
+<header class="hero">
+  <div class="hero-inner">
+    <div class="topline"><div class="flag"><span></span></div><div><div class="kicker">Norge U20 herrer</div><strong>Warszawa 2026</strong></div></div>
+    <h1>Samling & turnering<br>15.–21. september</h1>
+    <p>Reiseinformasjon, tentativt program, tropp, kamper, lokasjoner og praktisk transport samlet på ett sted.</p>
+    <div class="tripmeta"><span class="pill">🇵🇱 Warszawa</span><span class="pill">🏐 7 turneringskamper</span><span class="pill">🏨 a&o Warszawa Wola</span><span class="pill">📅 7 dager</span></div>
   </div>
-
 </header>
-
-
+<div class="nav-wrap"><nav class="nav" id="nav">
+  <button class="active" data-view="program">Program</button>
+  <button data-view="reise">Inn-/utreise</button>
+  <button data-view="tropp">Spillertropp</button>
+  <button data-view="kamper">Kamper</button>
+  <button data-view="steder">Lokasjoner</button>
+  <button data-view="transport">Transport</button>
+</nav></div>
 <main>
+<section class="view active" id="program">
+  <div class="section-head"><div><h2>Tentativt program</h2><p>Oppdateres når treningstider og treningskamper er endelig bekreftet.</p></div></div>
+  <div class="notice"><strong>Foreløpig:</strong> Onsdag og torsdag formiddag er satt av til trening hos MOS Wola. Friendly games mot lokale klubblag legges på ettermiddag/kveld. Turneringen fredag–søndag er lagt inn med kampene som foreligger nå.</div>
+  <div class="card">
+    <div class="day"><div class="datebox"><div class="dow">Tirsdag</div><div class="num">15. sep</div></div><div>
+      <div class="event"><div class="time">09:35</div><div><div class="event-title">Avreise Oslo <span class="tag travel">reise</span></div><div class="small muted">Ankomst Warszawa 11:25.</div></div></div>
+      <div class="event"><div class="time">11:25</div><div><div class="event-title">Avreise Stavanger <span class="tag travel">reise</span></div><div class="small muted">Ankomst Warszawa 13:30.</div></div></div>
+      <div class="event"><div class="time">Etter ankomst</div><div><div class="event-title">Innsjekk – a&o Warszawa Wola <span class="tag tent">tentativt</span></div><div class="small muted">Marcina Kasprzaka 18/20.</div></div></div>
+    </div></div>
+    <div class="day"><div class="datebox"><div class="dow">Onsdag</div><div class="num">16. sep</div></div><div>
+      <div class="event"><div class="time">Formiddag</div><div><div class="event-title">Trening – MOS Wola <span class="tag tent">tid kommer</span></div><div class="small muted">Rogalińska 2. Hallen ligger svært nær hotellet.</div></div></div>
+      <div class="event"><div class="time">Etterm.</div><div><div class="event-title">Friendly game mot lokalt klubblag <span class="tag tent">TBA</span></div><div class="small muted">Motstander, hall og kampstart ikke bekreftet.</div></div></div>
+    </div></div>
+    <div class="day"><div class="datebox"><div class="dow">Torsdag</div><div class="num">17. sep</div></div><div>
+      <div class="event"><div class="time">Formiddag</div><div><div class="event-title">Trening – MOS Wola <span class="tag tent">tid kommer</span></div><div class="small muted">Rogalińska 2.</div></div></div>
+      <div class="event"><div class="time">Etterm.</div><div><div class="event-title">Friendly game mot lokalt klubblag <span class="tag tent">TBA</span></div><div class="small muted">Motstander, hall og kampstart ikke bekreftet.</div></div></div>
+    </div></div>
+    <div class="day"><div class="datebox"><div class="dow">Fredag</div><div class="num">18. sep</div></div><div>
+      <div class="event"><div class="time">17:30</div><div><div class="event-title">Piła – Norge U20 <span class="tag match">bane 2</span></div><div class="small muted">Hala Sportowa “Koło”.</div></div></div>
+    </div></div>
+    <div class="day"><div class="datebox"><div class="dow">Lørdag</div><div class="num">19. sep</div></div><div>
+      <div class="event"><div class="time">09:00</div><div class="event-title">Norge U20 – MOS2 <span class="tag match">bane 2</span></div></div>
+      <div class="event"><div class="time">12:00</div><div class="event-title">Spała – Norge U20 <span class="tag match">bane 2</span></div></div>
+      <div class="event"><div class="time">18:00</div><div class="event-title">MOS1 – Norge U20 <span class="tag match">bane 3</span></div></div>
+      <div class="event"><div class="time">19:30</div><div class="event-title">Olsztyn – Norge U20 <span class="tag match">bane 1</span></div></div>
+    </div></div>
+    <div class="day"><div class="datebox"><div class="dow">Søndag</div><div class="num">20. sep</div></div><div>
+      <div class="event"><div class="time">09:00</div><div class="event-title">Bydgoszcz – Norge U20 <span class="tag match">bane 1</span></div></div>
+      <div class="event"><div class="time">12:00</div><div class="event-title">Norge U20 – Poznań <span class="tag match">bane 2</span></div></div>
+      <div class="event"><div class="time">15:30</div><div><div class="event-title">Turneringsavslutning</div><div class="small muted">PBW 2026.</div></div></div>
+    </div></div>
+    <div class="day"><div class="datebox"><div class="dow">Mandag</div><div class="num">21. sep</div></div><div>
+      <div class="event"><div class="time">08:15</div><div><div class="event-title">Fly til Stavanger <span class="tag travel">reise</span></div><div class="small muted">Ankomst 10:25.</div></div></div>
+      <div class="event"><div class="time">12:05</div><div><div class="event-title">Fly til Oslo <span class="tag travel">reise</span></div><div class="small muted">Ankomst 14:00.</div></div></div>
+    </div></div>
+  </div>
+</section>
 
-  <!-- IDEEN -->
-
-  <section>
-
-    <h2>Vi ønsker å videreføre regionslagideen</h2>
-
-    <p class="intro">
-      Mange spillere har gjennom regionslag og andre regionale
-      tiltak opplevd verdien av å trene sammen med andre ivrige
-      utøvere på tvers av klubbgrenser.
-    </p>
-
-    <p class="intro">
-      Med CR Volleyball ønsker vi å videreføre denne ideen.
-      Målet er å samle motiverte volleyballspillere i videregående
-      skolealder fra klubber i Region Øst til utviklingssamlinger
-      gjennom sesongen.
-    </p>
-
-    <p class="intro">
-      Samlingene skal være et supplement til den ordinære klubbtreningen.
-      Vi ønsker ikke å etablere et nytt lag eller konkurrere med klubbene,
-      men å skape en ekstra utviklingsarena for spillere som ønsker
-      å trene mer og møte andre utøvere med samme motivasjon.
-    </p>
-
-    <div class="highlight">
-
-      <strong>På tvers av klubbene – sammen om utvikling.</strong>
-
-      <br><br>
-
-      Ambisjonen er å skape et miljø der ivrige ungdommer
-      kan møtes flere ganger gjennom sesongen,
-      lære av hverandre og utvikle seg sammen.
-
+<section class="view" id="reise">
+  <div class="section-head"><div><h2>Innreise / utreise</h2><p>Foreløpig flyoversikt basert på opplysningene som er registrert.</p></div></div>
+  <div class="grid g2">
+    <div class="card"><div class="eyebrow">Oslo-gruppen</div><h3>Oslo → Warszawa</h3>
+      <div class="flight"><div><div class="route">15. september</div><div class="muted small">OSL → Warszawa</div></div><div class="bigtime">09:35 → 11:25</div></div>
+      <div class="flight"><div><div class="route">21. september</div><div class="muted small">Warszawa → OSL</div></div><div class="bigtime">12:05 → 14:00</div></div>
+      <div class="names"><span class="namechip">Piotr</span><span class="namechip">Mikael</span><span class="namechip">Thomas</span><span class="namechip">Petter</span><span class="namechip">Amund</span><span class="namechip">Isak</span><span class="namechip">Cyryl</span><span class="namechip">Hermann</span><span class="namechip">Martin</span><span class="namechip">Tobias*</span><span class="namechip">Sturla*</span></div>
+      <p class="small muted">* Tobias og Sturla reiser fra Bergen, men er oppgitt på samme fly til/fra Oslo videre.</p>
     </div>
-
-  </section>
-
-
-  <!-- SAMLINGER -->
-
-  <section>
-
-    <h2>Samlinger gjennom sesongen</h2>
-
-    <p class="intro">
-      Samlingene vil ha ulike temaer og fokusområder.
-      Innholdet kan variere gjennom sesongen basert på
-      spillernes behov og hvilke trenere som deltar.
-    </p>
-
-    <div class="clinics">
-
-      <div class="clinic-card">
-        <h3>Attack Clinic</h3>
-        <p>
-          Tilløp, timing, sats,
-          slagteknikk og ulike angrepsvalg.
-        </p>
-      </div>
-
-
-      <div class="clinic-card">
-        <h3>Block Clinic</h3>
-        <p>
-          Fotarbeid, timing,
-          håndstilling og posisjonering.
-        </p>
-      </div>
-
-
-      <div class="clinic-card">
-        <h3>Defense Clinic</h3>
-        <p>
-          Bevegelse, lesing,
-          forsvarsteknikk og posisjonering.
-        </p>
-      </div>
-
-
-      <div class="clinic-card">
-        <h3>Setter Clinic</h3>
-        <p>
-          Fotarbeid, teknikk,
-          tempo og beslutninger.
-        </p>
-      </div>
-
-
-      <div class="clinic-card">
-        <h3>Serve & Receive</h3>
-        <p>
-          Serve, mottak,
-          kommunikasjon og organisering.
-        </p>
-      </div>
-
-
-      <div class="clinic-card final-clinic">
-
-        <h3>Season Final – Samspillsclinic</h3>
-
-        <p>
-          Mot slutten av sesongen ønsker vi å samle spillerne
-          til en større samspillsclinic.
-        </p>
-
-        <p>
-          Her bruker vi ferdighetene fra sesongens samlinger
-          i spill og avslutter med en turnering.
-        </p>
-
-      </div>
-
+    <div class="card"><div class="eyebrow">Stavanger-gruppen</div><h3>Stavanger → Warszawa</h3>
+      <div class="flight"><div><div class="route">15. september</div><div class="muted small">SVG → Warszawa</div></div><div class="bigtime">11:25 → 13:30</div></div>
+      <div class="flight"><div><div class="route">21. september</div><div class="muted small">Warszawa → SVG</div></div><div class="bigtime">08:15 → 10:25</div></div>
+      <div class="names"><span class="namechip">Henrik</span><span class="namechip">Eivind</span><span class="namechip">Jonas</span></div>
     </div>
-
-  </section>
-
-
-  <!-- INTERESSE SPILLER -->
-
-  <section id="interesse">
-
-    <div class="interest-box">
-
-      <h2>Interessert i å delta?</h2>
-
-      <p>
-        Registrer deg dersom du ønsker å få informasjon
-        når nye CR Volleyball-samlinger i Region Øst blir planlagt.
-      </p>
-
-      <p class="small-text">
-        Registreringen er ikke bindende og er ikke en påmelding
-        til en bestemt samling.
-      </p>
-
-
-      <!-- MELDING SPILLER -->
-
-      <div
-        id="playerMessage"
-        class="form-message"
-        aria-live="polite">
-      </div>
-
-
-      <form id="interestForm">
-
-        <div class="form-row">
-
-          <div>
-
-            <label for="firstName">
-              Fornavn *
-            </label>
-
-            <input
-              id="firstName"
-              name="firstName"
-              type="text"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="lastName">
-              Etternavn *
-            </label>
-
-            <input
-              id="lastName"
-              name="lastName"
-              type="text"
-              required
-            />
-
-          </div>
-
-        </div>
-
-
-        <div class="form-row">
-
-          <div>
-
-            <label for="birthYear">
-              Fødselsår *
-            </label>
-
-            <input
-              id="birthYear"
-              name="birthYear"
-              type="number"
-              min="2005"
-              max="2013"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="club">
-              Klubb
-            </label>
-
-            <input
-              id="club"
-              name="club"
-              type="text"
-            />
-
-          </div>
-
-        </div>
-
-
-        <div>
-
-          <label for="position">
-            Posisjon
-          </label>
-
-          <select
-            id="position"
-            name="position">
-
-            <option value="">
-              Velg posisjon
-            </option>
-
-            <option>Opplegger</option>
-            <option>Kant</option>
-            <option>Diagonal</option>
-            <option>Midt</option>
-            <option>Libero</option>
-            <option>Flere posisjoner / vet ikke</option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-row">
-
-          <div>
-
-            <label for="email">
-              E-post *
-            </label>
-
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="phone">
-              Telefon
-            </label>
-
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-            />
-
-          </div>
-
-        </div>
-
-
-        <div>
-
-          <label for="comments">
-            Kommentar
-          </label>
-
-          <textarea
-            id="comments"
-            name="comments"
-            placeholder="Eventuelle ønsker, nivå eller kommentarer"
-          ></textarea>
-
-        </div>
-
-
-        <div class="checkbox-row">
-
-          <input
-            id="consent"
-            name="consent"
-            type="checkbox"
-            required
-          />
-
-<label for="consent">
-  Jeg ønsker informasjon om kommende CR Volleyball-samlinger
-  og samtykker til å bli kontaktet på e-post eller SMS.
-  Jeg har lest
-  <a href="personvern.html" target="_blank">
-    personvernerklæringen
-  </a>.
-</label>
-
-        </div>
-
-
-        <button type="submit">
-          Registrer interesse
-        </button>
-
-      </form>
-
+  </div>
+  <div class="card" style="margin-top:14px"><div class="eyebrow">Base i Warszawa</div><h3>a&o Warszawa Wola</h3><p class="muted">Marcina Kasprzaka 18/20, 01-211 Warszawa · Telefon +48 22 524 41 60</p><div class="actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Marcina+Kasprzaka+18%2F20%2C+Warszawa">Åpne i Google Maps</a><a class="btn" href="tel:+48225244160">Ring hotellet</a></div></div>
+</section>
+
+<section class="view" id="tropp">
+  <div class="section-head"><div><h2>Spillertropp</h2><p>Foreløpig navneliste fra reisefordelingen. Roller og spillerposisjoner kan legges til senere.</p></div></div>
+  <div class="notice">Jeg har ikke gjettet hvem som er spillere, trenere eller støtteapparat. Listen viser derfor alle navn du har oppgitt, slik at vi kan sortere den korrekt når den endelige troppen foreligger.</div>
+  <div class="roster">
+    <div class="person"><strong>Piotr</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Mikael</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Thomas</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Petter</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Amund</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Isak</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Cyryl</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Hermann</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Martin</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Henrik</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Eivind</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Jonas</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Tobias</strong><span>Rolle ikke angitt</span></div><div class="person"><strong>Sturla</strong><span>Rolle ikke angitt</span></div>
+  </div>
+</section>
+
+<section class="view" id="kamper">
+  <div class="section-head"><div><h2>Turneringskamper</h2><p>Hala Sportowa “Koło” · Obozowa 60 · 18.–20. september.</p></div></div>
+  <div class="card schedule-scroll"><table class="schedule-table"><thead><tr><th>Dato</th><th>Tid</th><th>Kamp</th><th>Bane</th></tr></thead><tbody>
+  <tr><td>Fre. 18.09</td><td><strong>17:30</strong></td><td>Piła – <strong>Norge U20</strong></td><td class="court">2</td></tr>
+  <tr><td>Lør. 19.09</td><td><strong>09:00</strong></td><td><strong>Norge U20</strong> – MOS2</td><td class="court">2</td></tr>
+  <tr><td>Lør. 19.09</td><td><strong>12:00</strong></td><td>Spała – <strong>Norge U20</strong></td><td class="court">2</td></tr>
+  <tr><td>Lør. 19.09</td><td><strong>18:00</strong></td><td>MOS1 – <strong>Norge U20</strong></td><td class="court">3</td></tr>
+  <tr><td>Lør. 19.09</td><td><strong>19:30</strong></td><td>Olsztyn – <strong>Norge U20</strong></td><td class="court">1</td></tr>
+  <tr><td>Søn. 20.09</td><td><strong>09:00</strong></td><td>Bydgoszcz – <strong>Norge U20</strong></td><td class="court">1</td></tr>
+  <tr><td>Søn. 20.09</td><td><strong>12:00</strong></td><td><strong>Norge U20</strong> – Poznań</td><td class="court">2</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="view" id="steder">
+  <div class="section-head"><div><h2>Lokasjoner</h2><p>De viktigste stedene på turen, med direkte lenker til Google Maps.</p></div></div>
+  <div class="grid g3">
+    <div class="card location-card"><div class="loc-top"><div class="loc-icon">🏨</div><div class="eyebrow">Hotell</div><h3>a&o Warszawa Wola</h3><div class="loc-address">Marcina Kasprzaka 18/20<br>01-211 Warszawa</div><div class="actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=a%26o+Warszawa+Wola">Google Maps</a><a class="btn" href="tel:+48225244160">+48 22 524 41 60</a></div></div><div class="loc-info">24-timers resepsjon, Wi‑Fi og gode kollektivforbindelser. Base for hele oppholdet.</div></div>
+    <div class="card location-card"><div class="loc-top"><div class="loc-icon">🏐</div><div class="eyebrow">Treningshall</div><h3>MOS Wola Warszawa</h3><div class="loc-address">Rogalińska 2<br>01-206 Warszawa</div><div class="actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/gJ1AA34q1aR6oqQY6?g_st=aw">Google Maps</a><a class="btn" href="tel:+48226314989">+48 22 631 49 89</a></div></div><div class="loc-info">Międzyszkolny Ośrodek Sportowy nr 6. Trening onsdag og torsdag formiddag.</div></div>
+    <div class="card location-card"><div class="loc-top"><div class="loc-icon">🏆</div><div class="eyebrow">Turneringshall</div><h3>Hala Sportowa “Koło”</h3><div class="loc-address">Obozowa 60<br>01-423 Warszawa</div><div class="actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/GgPzf3NRAfKqzEqq9?g_st=aw">Google Maps</a></div></div><div class="loc-info">Turneringsarena fredag–søndag. Nær holdeplassene Magistracka / PKP Koło.</div></div>
+  </div>
+</section>
+
+<section class="view" id="transport">
+  <div class="section-head"><div><h2>Transport i Warszawa</h2><p>Praktiske alternativer fra hotellet. Prisene for Uber er veiledende – appen viser faktisk pris før bestilling.</p></div></div>
+  <div class="grid g2">
+    <div class="card transport-card"><div class="eyebrow">Hotel → trening</div><h3>a&o Warszawa Wola → MOS Wola</h3>
+      <div class="mode"><div><strong>🚶 Til fots</strong><div class="small muted">Rogalińska 2 ligger bare ca. 150 m i luftlinje fra hotelladressen.</div></div><div class="price good">Best valg</div></div>
+      <div class="mode"><div><strong>🚕 Uber</strong><div class="small muted">Så kort tur at gange normalt er enklere.</div></div><div class="price">Ikke anbefalt</div></div>
+      <div class="actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Marcina+Kasprzaka+18%2F20,+Warszawa&destination=Rogali%C5%84ska+2,+Warszawa&travelmode=walking">Vis gangrute</a></div>
     </div>
-
-  </section>
-
-
-  <!-- KLUBB -->
-
-  <section id="klubb">
-
-    <div class="interest-box club-box">
-
-      <h2>Kan klubben deres være vertskap?</h2>
-
-      <p class="intro">
-        Vi ønsker å gjennomføre samlingene
-        i samarbeid med volleyballklubber i Region Øst.
-      </p>
-
-      <p>
-        Dersom klubben har en treningstid eller halltid
-        som kan stilles til disposisjon for en utviklingssamling,
-        ønsker vi gjerne å høre fra dere.
-      </p>
-
-      <p>
-        Det kan for eksempel være en ordinær treningstid
-        klubben ønsker å åpne for spillere fra flere klubber,
-        eller tilgjengelig halltid som kan benyttes
-        til en regional utviklingssamling.
-      </p>
-
-      <p class="small-text">
-        Registreringen er kun en interessehenvendelse.
-        Vi tar kontakt for å diskutere dato,
-        tidspunkt og praktisk gjennomføring.
-      </p>
-
-
-      <!-- MELDING KLUBB -->
-
-      <div
-        id="clubMessage"
-        class="form-message"
-        aria-live="polite">
-      </div>
-
-
-      <form id="clubForm">
-
-        <div class="form-row">
-
-          <div>
-
-            <label for="clubName">
-              Klubb *
-            </label>
-
-            <input
-              id="clubName"
-              name="clubName"
-              type="text"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="contactName">
-              Kontaktperson *
-            </label>
-
-            <input
-              id="contactName"
-              name="contactName"
-              type="text"
-              required
-            />
-
-          </div>
-
-        </div>
-
-
-        <div class="form-row">
-
-          <div>
-
-            <label for="clubEmail">
-              E-post *
-            </label>
-
-            <input
-              id="clubEmail"
-              name="clubEmail"
-              type="email"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="clubPhone">
-              Telefon
-            </label>
-
-            <input
-              id="clubPhone"
-              name="clubPhone"
-              type="tel"
-            />
-
-          </div>
-
-        </div>
-
-
-        <div>
-
-          <label for="hallName">
-            Hall / treningssted
-          </label>
-
-          <input
-            id="hallName"
-            name="hallName"
-            type="text"
-          />
-
-        </div>
-
-
-        <div class="form-row">
-
-          <div>
-
-            <label for="weekday">
-              Aktuell ukedag
-            </label>
-
-            <select
-              id="weekday"
-              name="weekday">
-
-              <option value="">
-                Velg
-              </option>
-
-              <option>Mandag</option>
-              <option>Tirsdag</option>
-              <option>Onsdag</option>
-              <option>Torsdag</option>
-              <option>Fredag</option>
-              <option>Lørdag</option>
-              <option>Søndag</option>
-
-            </select>
-
-          </div>
-
-
-          <div>
-
-            <label for="availableTime">
-              Tidspunkt
-            </label>
-
-            <input
-              id="availableTime"
-              name="availableTime"
-              type="text"
-              placeholder="F.eks. 18:00–20:00"
-            />
-
-          </div>
-
-        </div>
-
-
-        <div>
-
-          <label for="clubComments">
-            Kommentar
-          </label>
-
-          <textarea
-            id="clubComments"
-            name="clubComments"
-            placeholder="Fortell gjerne litt om tilgjengelig treningstid eller andre muligheter"
-          ></textarea>
-
-        </div>
-
-
-        <div class="checkbox-row">
-
-          <input
-            id="clubConsent"
-            name="clubConsent"
-            type="checkbox"
-            required
-          />
-
-<label for="clubConsent">
-  Jeg samtykker til at CR Development kan kontakte meg
-  om muligheten for å arrangere en CR Volleyball-samling.
-  Jeg har lest
-  <a href="personvern.html" target="_blank">
-    personvernerklæringen
-  </a>.
-</label>
-
-        </div>
-
-
-        <button type="submit">
-          Registrer klubbens interesse
-        </button>
-
-      </form>
-
+    <div class="card transport-card"><div class="eyebrow">Hotel → turnering</div><h3>a&o Warszawa Wola → Hala “Koło”</h3>
+      <div class="mode"><div><strong>🚋 Kollektivt</strong><div class="small muted">Trikk/buss er normalt et godt gruppealternativ. Bruk Jakdojade eller Google Maps for live-rute.</div></div><div class="price">4,40 zł*</div></div>
+      <div class="mode"><div><strong>🚕 Uber</strong><div class="small muted">Warszawa-gjennomsnittet for en 19-minutters UberX-tur er rundt 33 zł. Denne turen kan være kortere, men pris varierer med trafikk og etterspørsel.</div></div><div class="price">ca. 20–35 zł**</div></div>
+      <div class="actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Marcina+Kasprzaka+18%2F20,+Warszawa&destination=Obozowa+60,+Warszawa&travelmode=transit">Kollektivrute</a><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Marcina+Kasprzaka+18%2F20,+Warszawa&destination=Obozowa+60,+Warszawa&travelmode=driving">Bilrute</a></div>
     </div>
-
-  </section>
-
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><div class="eyebrow">Billetter</div><h3>ZTM Warszawa</h3><p class="muted">75-minuttersbillett i sone 1 koster <strong>4,40 zł</strong> ordinært. Det finnes også en 75-minutters gruppebillett for inntil 10 personer til <strong>22 zł</strong>, 24-timersbillett til 15 zł og 72-timersbillett til 36 zł.</p><p class="small muted">* Prisnivå kontrollert mot Warszawas kollektivinformasjon i september 2026.</p></div>
+    <div class="card"><div class="eyebrow">Praktisk råd</div><h3>Gruppe på 14 personer</h3><p class="muted">Til trening: gå samlet. Til turneringshallen: kollektivt er normalt billigst og enklest for hele gruppen. Ved tidlige kamper eller stramt tidsskjema kan flere Uber/Taxi-biler være et godt alternativ.</p><p class="small muted">** Uber viser forhåndspris ved bestilling. Prisene på siden er derfor bare et planleggingsanslag.</p></div>
+  </div>
+</section>
 </main>
-
-
-<footer>
-
-  CR Development – Roness
-
-  <br>
-
-  <span style="font-size:13px;">
-    CR Volleyball
-  </span>
-
-  <br><br>
-
-  <a
-    href="personvern.html"
-    style="color:white; font-size:13px;"
-  >
-    Personvern
-  </a>
-
-</footer>
-
-<!-- SUPABASE -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
+<div class="footer">Norge U20 · Warszawa 2026 · Program og reisefakta kan oppdateres fortløpende.</div>
 <script>
-
-  // =========================================================
-  // SUPABASE
-  // =========================================================
-
-  const SUPABASE_URL =
-    "https://lannjcyihlyvvzecefrs.supabase.co";
-
-  const SUPABASE_KEY =
-    "sb_publishable_MqGWDF3WgXqnuRyY50Y_5g_xHYzcYtn";
-
-
-  const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-
-  // =========================================================
-  // HJELPEFUNKSJON FOR MELDINGER
-  // =========================================================
-
-  function showMessage(element, type, text) {
-
-    element.className = "form-message " + type;
-
-    element.textContent = text;
-
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-  }
-
-
-  function clearMessage(element) {
-
-    element.className = "form-message";
-
-    element.textContent = "";
-
-  }
-
-
-
-  // =========================================================
-  // SPILLERREGISTRERING
-  // =========================================================
-
-  document
-    .getElementById("interestForm")
-    .addEventListener("submit", async function(event) {
-
-      event.preventDefault();
-
-
-      const form = event.target;
-
-      const button =
-        form.querySelector("button[type='submit']");
-
-      const message =
-        document.getElementById("playerMessage");
-
-
-      clearMessage(message);
-
-
-      button.disabled = true;
-
-      button.textContent = "Registrerer...";
-
-
-      const registration = {
-
-        first_name:
-          document
-            .getElementById("firstName")
-            .value
-            .trim(),
-
-        last_name:
-          document
-            .getElementById("lastName")
-            .value
-            .trim(),
-
-        birth_year:
-          Number(
-            document
-              .getElementById("birthYear")
-              .value
-          ),
-
-        club:
-          document
-            .getElementById("club")
-            .value
-            .trim() || null,
-
-        position:
-          document
-            .getElementById("position")
-            .value || null,
-
-        email:
-          document
-            .getElementById("email")
-            .value
-            .trim(),
-
-        phone:
-          document
-            .getElementById("phone")
-            .value
-            .trim() || null,
-
-        comments:
-          document
-            .getElementById("comments")
-            .value
-            .trim() || null,
-
-        consent_to_contact:
-          document
-            .getElementById("consent")
-            .checked,
-
-        privacy_accepted_at:
-          new Date().toISOString()
-
-      };
-
-
-      const { error } =
-        await supabaseClient
-          .from("crv_interests")
-          .insert(registration);
-
-
-      if (error) {
-
-        console.error(
-          "Feil ved spillerregistrering:",
-          error
-        );
-
-
-        showMessage(
-          message,
-          "error",
-          "Vi klarte dessverre ikke å registrere interessen akkurat nå. Prøv igjen om litt."
-        );
-
-
-        button.disabled = false;
-
-        button.textContent =
-          "Registrer interesse";
-
-        return;
-
-      }
-
-
-      form.reset();
-
-
-      showMessage(
-        message,
-        "success",
-        "Takk! Interessen din er registrert. Du får beskjed når nye CR Volleyball-samlinger planlegges."
-      );
-
-
-      button.disabled = false;
-
-      button.textContent =
-        "Registrer interesse";
-
-    });
-
-
-
-  // =========================================================
-  // KLUBBREGISTRERING
-  // =========================================================
-
-  document
-    .getElementById("clubForm")
-    .addEventListener("submit", async function(event) {
-
-      event.preventDefault();
-
-
-      const form = event.target;
-
-      const button =
-        form.querySelector("button[type='submit']");
-
-      const message =
-        document.getElementById("clubMessage");
-
-
-      clearMessage(message);
-
-
-      button.disabled = true;
-
-      button.textContent = "Registrerer...";
-
-
-      const registration = {
-
-        club_name:
-          document
-            .getElementById("clubName")
-            .value
-            .trim(),
-
-        contact_name:
-          document
-            .getElementById("contactName")
-            .value
-            .trim(),
-
-        email:
-          document
-            .getElementById("clubEmail")
-            .value
-            .trim(),
-
-        phone:
-          document
-            .getElementById("clubPhone")
-            .value
-            .trim() || null,
-
-        hall_name:
-          document
-            .getElementById("hallName")
-            .value
-            .trim() || null,
-
-        weekday:
-          document
-            .getElementById("weekday")
-            .value || null,
-
-        available_time:
-          document
-            .getElementById("availableTime")
-            .value
-            .trim() || null,
-
-        comments:
-          document
-            .getElementById("clubComments")
-            .value
-            .trim() || null,
-
-        consent_to_contact:
-          document
-            .getElementById("clubConsent")
-            .checked
-
-      };
-
-
-      const { error } =
-        await supabaseClient
-          .from("crv_club_hosts")
-          .insert(registration);
-
-
-      if (error) {
-
-        console.error(
-          "Feil ved klubbregistrering:",
-          error
-        );
-
-
-        showMessage(
-          message,
-          "error",
-          "Vi klarte dessverre ikke å registrere klubbens interesse akkurat nå. Prøv igjen om litt."
-        );
-
-
-        button.disabled = false;
-
-        button.textContent =
-          "Registrer klubbens interesse";
-
-        return;
-
-      }
-
-
-      form.reset();
-
-
-      showMessage(
-        message,
-        "success",
-        "Takk! Klubbens interesse er registrert. Vi tar kontakt for å diskutere muligheten for å arrangere en CR Volleyball-samling."
-      );
-
-
-      button.disabled = false;
-
-      button.textContent =
-        "Registrer klubbens interesse";
-
-    });
-
+const buttons=[...document.querySelectorAll('#nav button')];const views=[...document.querySelectorAll('.view')];
+function show(id){buttons.forEach(b=>b.classList.toggle('active',b.dataset.view===id));views.forEach(v=>v.classList.toggle('active',v.id===id));history.replaceState(null,'','#'+id);window.scrollTo({top:document.querySelector('.nav-wrap').offsetTop,behavior:'smooth'});}
+buttons.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
+const initial=location.hash.slice(1);if(initial&&document.getElementById(initial)){buttons.forEach(b=>b.classList.toggle('active',b.dataset.view===initial));views.forEach(v=>v.classList.toggle('active',v.id===initial));}
 </script>
-
-</body>
-</html>
+</body></html>
