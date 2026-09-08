@@ -3,176 +3,230 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#081b31">
 <title>Norge U20 – Warszawa 2026</title>
 <style>
-:root{--navy:#071a2f;--navy2:#0b2b4d;--blue:#0c5ca8;--red:#d71920;--bg:#f4f7fb;--card:#fff;--text:#172233;--muted:#6b7687;--line:#dde5ef;--ok:#16835d;--warn:#aa6500;--shadow:0 10px 30px rgba(15,35,60,.08);--radius:22px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
-a{color:inherit}.hero{background:linear-gradient(140deg,var(--navy),var(--navy2));color:#fff;padding:20px 18px 26px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-90px;top:-100px;background:rgba(255,255,255,.06)}
-.hero-inner{max-width:1180px;margin:auto}.topline{display:flex;align-items:center;gap:12px}.flag{width:52px;height:36px;border-radius:8px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.25);display:grid;background:#ba0c2f;position:relative}.flag:before{content:"";position:absolute;left:15px;top:0;width:10px;height:100%;background:#fff}.flag:after{content:"";position:absolute;left:0;top:13px;width:100%;height:10px;background:#fff}.flag span:before{content:"";position:absolute;left:18px;top:0;width:4px;height:100%;background:#00205b;z-index:2}.flag span:after{content:"";position:absolute;left:0;top:16px;width:100%;height:4px;background:#00205b;z-index:2}
-.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;opacity:.72;font-weight:800}.hero h1{font-size:clamp(2rem,6vw,4rem);line-height:.95;margin:18px 0 10px;letter-spacing:-.045em}.hero p{max-width:700px;margin:0;opacity:.82;font-size:1.02rem}.tripmeta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);padding:9px 12px;border-radius:999px;font-size:.86rem;font-weight:700}
-.nav-wrap{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-top:1px solid rgba(221,229,239,.95);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -8px 24px rgba(15,35,60,.08)}.nav{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(6,1fr);gap:2px;padding:5px 6px 4px}.nav button{min-width:0;border:0;background:transparent;padding:5px 2px 4px;border-radius:10px;font-weight:800;color:#687486;cursor:pointer;font-size:.66rem;line-height:1.05;display:flex;flex-direction:column;align-items:center;gap:3px}.nav button.active{background:#eaf2fb;color:var(--navy)}.nav-ico{font-size:1.18rem;line-height:1}
-main{max-width:1180px;margin:auto;padding:14px 12px 92px}.view{display:none}.view.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:2px 2px 10px}.section-head h2{font-size:1.5rem;margin:0;letter-spacing:-.03em}.section-head p{margin:2px 0 0;color:var(--muted);font-size:.88rem;line-height:1.3}
-.notice{border:1px solid #f1d19b;background:#fff8ea;color:#7a4a00;border-radius:13px;padding:10px 11px;margin-bottom:10px;font-size:.84rem;line-height:1.35}.grid{display:grid;gap:10px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 5px 18px rgba(15,35,60,.06);padding:13px}.card h3{margin:0 0 5px;font-size:1.05rem}.muted{color:var(--muted)}.small{font-size:.86rem}.eyebrow{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:var(--blue)}
-.day{display:grid;grid-template-columns:72px 1fr;gap:8px;padding:11px 0;border-top:1px solid var(--line)}.day:first-of-type{border-top:0;padding-top:2px}.datebox{font-weight:900;color:var(--navy)}.datebox .dow{font-size:.76rem;text-transform:uppercase;color:var(--muted);letter-spacing:.09em}.datebox .num{font-size:1.3rem;line-height:1.05}.event{display:grid;grid-template-columns:58px 1fr;gap:7px;padding:6px 0}.time{font-weight:900;color:var(--navy)}.event-title{font-weight:850}.tag{display:inline-block;font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;border-radius:999px;padding:4px 7px;margin-left:6px;vertical-align:1px}.tent{background:#fff1d7;color:#8a5100}.confirmed{background:#e3f6ed;color:#0f6b4b}.match{background:#e7f0fb;color:#084d8f}.travel{background:#eeeafc;color:#5a38a0}
-.flight{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}.flight:first-of-type{border-top:0}.route{font-weight:900}.route span{font-weight:600;color:var(--muted)}.bigtime{font-size:1.18rem;font-weight:900;text-align:right}.names{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}.namechip{padding:5px 7px;border:1px solid var(--line);border-radius:10px;background:#f8fafc;font-size:.84rem;font-weight:700}
-.roster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.person{padding:9px;border:1px solid var(--line);border-radius:14px;background:#fff}.person strong{display:block}.person span{font-size:.8rem;color:var(--muted)}
-.location-card{padding:0;overflow:hidden}.loc-top{padding:13px}.loc-icon{width:36px;height:36px;border-radius:11px;background:#e8f1fb;display:grid;place-items:center;font-size:1.2rem;margin-bottom:14px}.loc-address{color:var(--muted);margin-top:5px}.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:10px;padding:8px 10px;font-weight:850;font-size:.88rem;border:1px solid var(--line);background:#fff}.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}.loc-info{border-top:1px solid var(--line);padding:14px 18px;background:#fafcff;font-size:.86rem;color:#586578}
-.transport-card .mode{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid var(--line)}.transport-card .mode:first-of-type{border-top:0}.price{font-weight:900;white-space:nowrap}.good{color:var(--ok)}.schedule-table{width:100%;border-collapse:collapse}.schedule-table th,.schedule-table td{text-align:left;border-bottom:1px solid var(--line);padding:11px 8px;font-size:.88rem}.schedule-table th{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}.schedule-table tr:last-child td{border-bottom:0}.court{font-weight:900;color:var(--blue)}
-.footer{max-width:1180px;margin:0 auto 86px;padding:0 14px;color:var(--muted);font-size:.8rem;text-align:center}
+:root{
+  --navy:#081b31;--navy2:#0d3156;--blue:#0b63b6;--red:#c8102e;
+  --bg:#f4f7fb;--card:#fff;--text:#172233;--muted:#6b7687;--line:#dde5ef;
+  --green:#18785d;--amber:#a76500;--shadow:0 8px 24px rgba(15,35,60,.08);
+  --navh:68px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit}.app{height:100dvh;min-height:100vh;overflow:hidden;padding-bottom:calc(var(--navh) + env(safe-area-inset-bottom))}
+.view{display:none;height:calc(100dvh - var(--navh) - env(safe-area-inset-bottom));overflow:hidden}
+.view.active{display:flex;flex-direction:column}
+.page{height:100%;padding:14px 14px 10px;display:flex;flex-direction:column;gap:10px;max-width:1100px;width:100%;margin:0 auto;min-height:0}
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex:0 0 auto}
+.page-head h2{margin:0;font-size:clamp(1.35rem,4vw,2rem);line-height:1;letter-spacing:-.035em;color:var(--navy)}
+.page-head p{margin:4px 0 0;color:var(--muted);font-size:.8rem;line-height:1.25}
+.eyebrow{font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:var(--blue)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.muted{color:var(--muted)}.small{font-size:.78rem}.strong{font-weight:900}.nowrap{white-space:nowrap}
+
+/* Home */
+.home{background:linear-gradient(145deg,var(--navy) 0%,#0a2847 68%,#123e69 100%);color:#fff;position:relative}
+.home:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-150px;top:-105px;background:rgba(255,255,255,.055)}
+.home .page{position:relative;z-index:1;justify-content:space-between;padding:18px 16px 14px}
+.brand{display:flex;gap:10px;align-items:center}.flag{width:48px;height:34px;border-radius:8px;background:#ba0c2f;position:relative;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.24);flex:none}
+.flag:before{content:"";position:absolute;left:14px;top:0;width:9px;height:100%;background:#fff}.flag:after{content:"";position:absolute;left:0;top:12px;width:100%;height:9px;background:#fff}.flag i:before{content:"";position:absolute;left:17px;top:0;width:4px;height:100%;background:#00205b;z-index:2}.flag i:after{content:"";position:absolute;left:0;top:15px;width:100%;height:4px;background:#00205b;z-index:2}
+.brand-kicker{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:900;opacity:.72}.brand-title{font-weight:900;font-size:1rem;margin-top:1px}
+.hero-copy{margin:auto 0}.hero-copy h1{font-size:clamp(2.2rem,9vw,4.8rem);line-height:.94;margin:0 0 10px;letter-spacing:-.055em;max-width:850px}.hero-copy p{margin:0;max-width:720px;font-size:clamp(.88rem,2.6vw,1.08rem);line-height:1.35;color:rgba(255,255,255,.78)}
+.home-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{padding:10px 11px;border-radius:14px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.08);min-width:0}.stat b{display:block;font-size:1rem}.stat span{display:block;font-size:.68rem;color:rgba(255,255,255,.68);margin-top:2px}
+.home-actions{display:flex;gap:8px;flex-wrap:wrap}.ghost-btn{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.10);color:white;border-radius:12px;padding:9px 11px;font-weight:850;font-size:.78rem;cursor:pointer}
+
+/* Travel */
+.travel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0}.travel-card{padding:12px;display:flex;flex-direction:column;min-height:0}.travel-card h3{margin:3px 0 8px;font-size:1rem}.flight-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}.flight-row:first-of-type{border-top:0}.flight-row b{font-size:.94rem}.flight-row span{font-size:.72rem;color:var(--muted)}.flight-time{font-weight:900;font-size:.94rem;text-align:right}.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}.chip{font-size:.68rem;background:#f5f8fc;border:1px solid var(--line);border-radius:999px;padding:4px 6px;font-weight:750}.hotel-strip{padding:10px 12px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;flex:0 0 auto}.hotel-strip h3{margin:2px 0 1px;font-size:.94rem}.mini-actions{display:flex;gap:6px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:7px 9px;font-weight:850;font-size:.72rem;background:white}.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* Program */
+.timeline{display:grid;grid-template-rows:repeat(7,1fr);gap:5px;flex:1;min-height:0}.day-row{display:grid;grid-template-columns:76px 1fr auto;gap:8px;align-items:center;padding:7px 9px}.day-date{font-weight:900;color:var(--navy);line-height:1.1}.day-date span{display:block;font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px}.day-main{min-width:0}.day-main b{display:block;font-size:.84rem;line-height:1.15}.day-main small{display:block;color:var(--muted);font-size:.68rem;line-height:1.18;margin-top:2px}.badge{font-size:.6rem;text-transform:uppercase;letter-spacing:.06em;font-weight:900;border-radius:999px;padding:4px 6px;white-space:nowrap}.b-train{background:#e8f0fb;color:#0b559b}.b-friendly{background:#e5f6ee;color:#116848}.b-tba{background:#fff0d7;color:#875100}.b-match{background:#eeeafa;color:#5f3d9d}.b-travel{background:#eef1f5;color:#566272}
+
+/* Tournament */
+.match-card{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}.match-headline{padding:9px 11px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;flex:0 0 auto}.match-headline b{font-size:.82rem}.match-list{display:grid;grid-template-rows:repeat(7,1fr);flex:1;min-height:0}.match-row{display:grid;grid-template-columns:70px 48px 1fr 44px;gap:7px;align-items:center;padding:7px 10px;border-top:1px solid var(--line)}.match-row:first-child{border-top:0}.match-date{font-size:.68rem;color:var(--muted);font-weight:800}.match-time{font-size:.9rem;font-weight:950;color:var(--navy)}.match-teams{font-size:.79rem;line-height:1.1;font-weight:750}.court{font-size:.66rem;font-weight:900;color:var(--blue);text-align:right}
+
+/* Places */
+.place-grid{display:grid;grid-template-rows:repeat(3,1fr);gap:8px;flex:1;min-height:0}.place-card{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;padding:10px 11px;min-height:0}.place-icon{width:38px;height:38px;border-radius:12px;background:#e9f1fa;display:grid;place-items:center;font-size:1.15rem}.place-card h3{margin:2px 0;font-size:.93rem;line-height:1.1}.place-address{font-size:.72rem;color:var(--muted);line-height:1.25}.place-actions{display:flex;flex-direction:column;gap:5px}.place-note{font-size:.66rem;color:var(--muted);margin-top:3px;line-height:1.15}
+
+/* Transport */
+.transport-grid{display:grid;grid-template-rows:1fr 1fr auto;gap:8px;flex:1;min-height:0}.route-card{padding:10px 11px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.route-card h3{margin:2px 0 5px;font-size:.91rem}.route-lines{display:flex;gap:8px;flex-wrap:wrap}.route-pill{font-size:.68rem;border-radius:999px;background:#f5f8fc;border:1px solid var(--line);padding:4px 6px;font-weight:750}.route-pill.good{background:#e8f6ef;color:#116848}.route-price{font-weight:950;font-size:.84rem;color:var(--navy);text-align:right}.ticket-card{padding:8px 10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}.ticket{font-size:.68rem;line-height:1.2}.ticket b{display:block;color:var(--navy);font-size:.76rem}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(4,16,29,.66);display:none;align-items:flex-end;justify-content:center;padding:12px}.modal.open{display:flex}.sheet{width:min(760px,100%);max-height:82dvh;background:#fff;border-radius:20px;padding:12px;overflow:auto;box-shadow:0 20px 50px rgba(0,0,0,.25)}.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.sheet-head h3{margin:0}.close{border:0;background:#eef2f7;border-radius:999px;width:34px;height:34px;font-size:1rem}.roster{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.person{border:1px solid var(--line);border-radius:12px;padding:7px}.person strong{display:block;font-size:.8rem}.person span{display:block;color:var(--muted);font-size:.68rem;margin-top:2px}.person a{text-decoration:none}
+
+/* Bottom nav */
+.nav-wrap{position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(255,255,255,.97);backdrop-filter:blur(18px);border-top:1px solid rgba(221,229,239,.96);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -8px 24px rgba(15,35,60,.08)}
+.nav{height:var(--navh);max-width:820px;margin:auto;display:grid;grid-template-columns:repeat(6,1fr);gap:2px;padding:5px 5px 4px}.nav button{min-width:0;border:0;background:transparent;padding:4px 1px;border-radius:11px;color:#6b7787;font-weight:850;font-size:.59rem;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer}.nav button.active{background:#eaf2fb;color:var(--navy)}.nav-ico{font-size:1.06rem;line-height:1}
+
 @media(max-width:760px){
-  :root{--radius:14px}
-  .hero{padding:10px 12px 12px}.hero-inner{max-width:none}.topline{gap:8px}.flag{width:42px;height:29px;border-radius:6px}.flag:before{left:12px;width:8px}.flag:after{top:10px;height:8px}.flag span:before{left:15px;width:3px}.flag span:after{top:13px;height:3px}.kicker{font-size:.66rem}.hero h1{font-size:1.55rem;line-height:1.02;margin:9px 0 6px}.hero p{font-size:.82rem;line-height:1.3}.tripmeta{gap:5px;margin-top:9px}.pill{padding:5px 8px;font-size:.7rem}
-  main{padding:10px 8px 86px}.section-head{margin-bottom:8px}.section-head h2{font-size:1.28rem}.section-head p{font-size:.79rem}.notice{padding:8px 9px;font-size:.78rem;margin-bottom:8px}.card{padding:10px;border-radius:13px}.card h3{font-size:.96rem}.small{font-size:.76rem}.eyebrow{font-size:.65rem}
-  .g2,.g3{grid-template-columns:1fr}.roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.person{padding:8px}.person strong{font-size:.88rem}.person span{font-size:.7rem}
-  .day{grid-template-columns:61px 1fr;gap:6px;padding:8px 0}.datebox .dow{font-size:.62rem}.datebox .num{font-size:1.02rem}.event{grid-template-columns:52px 1fr;gap:5px;padding:5px 0}.time{font-size:.79rem}.event-title{font-size:.86rem;line-height:1.2}.tag{font-size:.58rem;padding:3px 5px;margin-left:3px}
-  .flight{align-items:flex-start;flex-direction:column;gap:2px;padding:7px 0}.bigtime{text-align:left;font-size:1rem}.names{gap:4px}.namechip{padding:4px 6px;font-size:.72rem}
-  .location-card .loc-top{padding:10px}.loc-icon{width:31px;height:31px;font-size:1rem;margin-bottom:8px}.loc-address{font-size:.82rem}.loc-info{padding:9px 10px;font-size:.76rem}.btn{padding:7px 9px;font-size:.76rem}
-  .transport-card .mode{padding:8px 0;gap:8px}.price{font-size:.8rem}.schedule-scroll{overflow:visible}.schedule-table{min-width:0}.schedule-table th,.schedule-table td{padding:8px 4px;font-size:.76rem}.schedule-table th{font-size:.62rem}.schedule-table th:first-child,.schedule-table td:first-child{white-space:nowrap}.court{text-align:center}
-  .footer{margin-bottom:78px;font-size:.7rem;padding:0 10px}.nav{padding:4px 4px 3px}.nav button{font-size:.59rem;padding:4px 1px 3px;gap:2px}.nav-ico{font-size:1.06rem}
+  :root{--navh:64px}
+  .page{padding:10px 9px 8px;gap:7px}.page-head h2{font-size:1.28rem}.page-head p{font-size:.69rem;margin-top:2px}
+  .home .page{padding:12px 11px 10px}.brand{gap:8px}.flag{width:42px;height:29px;border-radius:7px}.flag:before{left:12px;width:8px}.flag:after{top:10px;height:8px}.flag i:before{left:15px;width:3px}.flag i:after{top:13px;height:3px}.brand-kicker{font-size:.58rem}.brand-title{font-size:.88rem}.hero-copy h1{font-size:clamp(2rem,11vw,3.4rem);margin-bottom:7px}.hero-copy p{font-size:.8rem;line-height:1.28}.home-stats{grid-template-columns:1fr 1fr;gap:6px}.stat{padding:8px 9px}.stat b{font-size:.86rem}.stat span{font-size:.6rem}.ghost-btn{padding:7px 9px;font-size:.68rem}
+  .travel-grid{grid-template-columns:1fr 1fr;gap:6px}.travel-card{padding:8px}.travel-card h3{font-size:.82rem;margin:2px 0 5px}.flight-row{padding:5px 0;gap:4px}.flight-row b,.flight-time{font-size:.75rem}.flight-row span{font-size:.58rem}.chips{gap:3px;margin-top:4px}.chip{font-size:.56rem;padding:3px 4px}.hotel-strip{padding:7px 8px}.hotel-strip h3{font-size:.78rem}.hotel-strip .small{font-size:.6rem}.btn{padding:6px 7px;font-size:.61rem;border-radius:8px}.mini-actions{gap:4px}
+  .timeline{gap:4px}.day-row{grid-template-columns:63px 1fr auto;gap:5px;padding:5px 7px}.day-date{font-size:.73rem}.day-date span{font-size:.52rem}.day-main b{font-size:.73rem}.day-main small{font-size:.58rem}.badge{font-size:.5rem;padding:3px 5px}
+  .match-headline{padding:7px 9px}.match-headline b{font-size:.7rem}.match-headline .small{font-size:.6rem}.match-row{grid-template-columns:57px 40px 1fr 36px;gap:5px;padding:5px 7px}.match-date{font-size:.56rem}.match-time{font-size:.77rem}.match-teams{font-size:.68rem}.court{font-size:.55rem}
+  .place-grid{gap:6px}.place-card{grid-template-columns:34px 1fr auto;gap:7px;padding:7px 8px}.place-icon{width:32px;height:32px;border-radius:10px;font-size:.95rem}.place-card h3{font-size:.78rem}.place-address{font-size:.6rem}.place-note{font-size:.55rem}.place-actions{gap:3px}.place-actions .btn{font-size:.57rem;padding:5px 6px}
+  .transport-grid{gap:6px}.route-card{padding:7px 8px}.route-card h3{font-size:.76rem;margin:1px 0 4px}.route-lines{gap:4px}.route-pill{font-size:.57rem;padding:3px 5px}.route-price{font-size:.68rem}.ticket-card{padding:6px 7px;gap:4px}.ticket{font-size:.56rem}.ticket b{font-size:.64rem}
+  .roster{grid-template-columns:1fr 1fr}.sheet{padding:10px;border-radius:16px}.person{padding:6px}.person strong{font-size:.72rem}.person span{font-size:.62rem}
+  .nav{padding:3px 3px 2px}.nav button{font-size:.52rem;gap:2px}.nav-ico{font-size:1rem}
+}
+
+@media(max-height:700px) and (max-width:760px){
+  :root{--navh:58px}.page{padding-top:7px;gap:5px}.page-head h2{font-size:1.12rem}.page-head p{display:none}.nav button{font-size:.48rem}.nav-ico{font-size:.92rem}.home-stats{grid-template-columns:repeat(4,1fr)}.stat{padding:6px}.stat b{font-size:.72rem}.stat span{font-size:.5rem}.hero-copy p{font-size:.72rem}.hero-copy h1{font-size:2rem}.travel-card{padding:6px}.chip{font-size:.51rem}.day-row{padding:4px 6px}.day-main small{display:none}.place-note{display:none}.route-pill{font-size:.52rem}
 }
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="hero-inner">
-    <div class="topline"><div class="flag"><span></span></div><div><div class="kicker">Norge U20 herrer</div><strong>Warszawa 2026</strong></div></div>
-    <h1>Samling & turnering<br>15.–21. september</h1>
-    <p>Reiseinformasjon, tentativt program, tropp, kamper, lokasjoner og praktisk transport samlet på ett sted.</p>
-    <div class="tripmeta"><span class="pill">🇵🇱 Warszawa</span><span class="pill">🏐 7 turneringskamper</span><span class="pill">🏨 a&o Warszawa Wola</span><span class="pill">📅 7 dager</span></div>
-  </div>
-</header>
-<div class="nav-wrap"><nav class="nav" id="nav" aria-label="Hovedmeny">
-  <button class="active" data-view="program"><span class="nav-ico">📅</span><span>Program</span></button>
-  <button data-view="reise"><span class="nav-ico">✈️</span><span>Reise</span></button>
-  <button data-view="tropp"><span class="nav-ico">👥</span><span>Tropp</span></button>
-  <button data-view="kamper"><span class="nav-ico">🏐</span><span>Kamper</span></button>
-  <button data-view="steder"><span class="nav-ico">📍</span><span>Steder</span></button>
-  <button data-view="transport"><span class="nav-ico">🚋</span><span>Transport</span></button>
-</nav></div>
-<main>
-<section class="view active" id="program">
-  <div class="section-head"><div><h2>Tentativt program</h2><p>Oppdateres når treningstider og treningskamper er endelig bekreftet.</p></div></div>
-  <div class="notice"><strong>Foreløpig:</strong> Onsdag og torsdag trener vi kl. 10:00–12:00 hos MOS Wola. Torsdag kl. 16:00 spiller vi friendly game mot MOS Wola Warsaw i Rogalińska 2. Friendly game onsdag er fortsatt ikke fastsatt. Turneringen fredag–søndag er lagt inn med kampene som foreligger nå.</div>
-  <div class="card">
-    <div class="day"><div class="datebox"><div class="dow">Tirsdag</div><div class="num">15. sep</div></div><div>
-      <div class="event"><div class="time">09:35</div><div><div class="event-title">Avreise Oslo <span class="tag travel">reise</span></div><div class="small muted">Ankomst Warszawa 11:25.</div></div></div>
-      <div class="event"><div class="time">11:25</div><div><div class="event-title">Avreise Stavanger <span class="tag travel">reise</span></div><div class="small muted">Ankomst Warszawa 13:30.</div></div></div>
-      <div class="event"><div class="time">Etter ankomst</div><div><div class="event-title">Innsjekk – a&o Warszawa Wola <span class="tag tent">tentativt</span></div><div class="small muted">Marcina Kasprzaka 18/20.</div></div></div>
-    </div></div>
-    <div class="day"><div class="datebox"><div class="dow">Onsdag</div><div class="num">16. sep</div></div><div>
-      <div class="event"><div class="time">10:00–12:00</div><div><div class="event-title">Trening – MOS Wola <span class="tag">trening</span></div><div class="small muted">Rogalińska 2. Hallen ligger svært nær hotellet.</div></div></div>
-      <div class="event"><div class="time">Etterm.</div><div><div class="event-title">Friendly game mot lokalt klubblag <span class="tag tent">TBA</span></div><div class="small muted">Motstander, hall og kampstart ikke bekreftet.</div></div></div>
-    </div></div>
-    <div class="day"><div class="datebox"><div class="dow">Torsdag</div><div class="num">17. sep</div></div><div>
-      <div class="event"><div class="time">10:00–12:00</div><div><div class="event-title">Trening – MOS Wola <span class="tag">trening</span></div><div class="small muted">Rogalińska 2.</div></div></div>
-      <div class="event"><div class="time">16:00</div><div><div class="event-title">Friendly game – Norge U20 vs MOS Wola Warsaw <span class="tag match">friendly</span></div><div class="small muted">Rogalińska 2.</div></div></div>
-    </div></div>
-    <div class="day"><div class="datebox"><div class="dow">Fredag</div><div class="num">18. sep</div></div><div>
-      <div class="event"><div class="time">17:30</div><div><div class="event-title">Piła – Norge U20 <span class="tag match">bane 2</span></div><div class="small muted">Hala Sportowa “Koło”.</div></div></div>
-    </div></div>
-    <div class="day"><div class="datebox"><div class="dow">Lørdag</div><div class="num">19. sep</div></div><div>
-      <div class="event"><div class="time">09:00</div><div class="event-title">Norge U20 – MOS2 <span class="tag match">bane 2</span></div></div>
-      <div class="event"><div class="time">12:00</div><div class="event-title">Spała – Norge U20 <span class="tag match">bane 2</span></div></div>
-      <div class="event"><div class="time">18:00</div><div class="event-title">MOS1 – Norge U20 <span class="tag match">bane 3</span></div></div>
-      <div class="event"><div class="time">19:30</div><div class="event-title">Olsztyn – Norge U20 <span class="tag match">bane 1</span></div></div>
-    </div></div>
-    <div class="day"><div class="datebox"><div class="dow">Søndag</div><div class="num">20. sep</div></div><div>
-      <div class="event"><div class="time">09:00</div><div class="event-title">Bydgoszcz – Norge U20 <span class="tag match">bane 1</span></div></div>
-      <div class="event"><div class="time">12:00</div><div class="event-title">Norge U20 – Poznań <span class="tag match">bane 2</span></div></div>
-      <div class="event"><div class="time">15:30</div><div><div class="event-title">Turneringsavslutning</div><div class="small muted">PBW 2026.</div></div></div>
-    </div></div>
-    <div class="day"><div class="datebox"><div class="dow">Mandag</div><div class="num">21. sep</div></div><div>
-      <div class="event"><div class="time">08:15</div><div><div class="event-title">Fly til Stavanger <span class="tag travel">reise</span></div><div class="small muted">Ankomst 10:25.</div></div></div>
-      <div class="event"><div class="time">12:05</div><div><div class="event-title">Fly til Oslo <span class="tag travel">reise</span></div><div class="small muted">Ankomst 14:00.</div></div></div>
-    </div></div>
+<div class="app">
+
+<section class="view home active" id="hjem">
+  <div class="page">
+    <div class="brand"><div class="flag"><i></i></div><div><div class="brand-kicker">Norge U20 herrer</div><div class="brand-title">Warszawa 2026</div></div></div>
+    <div class="hero-copy">
+      <h1>Samling &<br>turnering</h1>
+      <p>Warszawa 15.–21. september 2026. Trening, friendly games og 7 turneringskamper samlet i én mobilvennlig turguide.</p>
+    </div>
+    <div>
+      <div class="home-stats">
+        <div class="stat"><b>15.–21. sep</b><span>7 dager i Warszawa</span></div>
+        <div class="stat"><b>14 spillere</b><span>Norge U20 herrer</span></div>
+        <div class="stat"><b>7 kamper</b><span>Turnering fre.–søn.</span></div>
+        <div class="stat"><b>a&o Wola</b><span>Base for oppholdet</span></div>
+      </div>
+      <div class="home-actions" style="margin-top:8px"><button class="ghost-btn" id="openRoster">👥 Se spillertropp</button><button class="ghost-btn" data-jump="program">📅 Se program</button></div>
+    </div>
   </div>
 </section>
 
 <section class="view" id="reise">
-  <div class="section-head"><div><h2>Innreise / utreise</h2><p>Foreløpig flyoversikt basert på opplysningene som er registrert.</p></div></div>
-  <div class="grid g2">
-    <div class="card"><div class="eyebrow">Oslo-gruppen</div><h3>Oslo → Warszawa</h3>
-      <div class="flight"><div><div class="route">15. september</div><div class="muted small">OSL → Warszawa</div></div><div class="bigtime">09:35 → 11:25</div></div>
-      <div class="flight"><div><div class="route">21. september</div><div class="muted small">Warszawa → OSL</div></div><div class="bigtime">12:05 → 14:00</div></div>
-      <div class="names"><span class="namechip">Piotr</span><span class="namechip">Mikael</span><span class="namechip">Thomas</span><span class="namechip">Petter</span><span class="namechip">Amund</span><span class="namechip">Isak</span><span class="namechip">Cyryl</span><span class="namechip">Hermann</span><span class="namechip">Martin</span><span class="namechip">Tobias*</span><span class="namechip">Sturla*</span></div>
-      <p class="small muted">* Tobias og Sturla reiser fra Bergen, men er oppgitt på samme fly til/fra Oslo videre.</p>
+  <div class="page">
+    <div class="page-head"><div><div class="eyebrow">Inn / ut</div><h2>Reise</h2><p>Flygruppene og hotellet samlet på én skjerm.</p></div></div>
+    <div class="travel-grid">
+      <div class="card travel-card">
+        <div class="eyebrow">Oslo + Bergen</div><h3>OSL ⇄ Warszawa</h3>
+        <div class="flight-row"><div><b>15. sep</b><br><span>OSL → WAW</span></div><div class="flight-time">09:35–11:25</div></div>
+        <div class="flight-row"><div><b>21. sep</b><br><span>WAW → OSL</span></div><div class="flight-time">12:05–14:00</div></div>
+        <div class="chips"><span class="chip">Piotr</span><span class="chip">Mikael</span><span class="chip">Thomas</span><span class="chip">Petter</span><span class="chip">Amund</span><span class="chip">Isak</span><span class="chip">Cyryl</span><span class="chip">Hermann</span><span class="chip">Martin</span><span class="chip">Tobias*</span><span class="chip">Sturla*</span></div>
+        <div class="small muted" style="margin-top:auto;padding-top:5px">* Tobias og Sturla starter/slutter reisen i Bergen, men følger Oslo-flyet til/fra Warszawa.</div>
+      </div>
+      <div class="card travel-card">
+        <div class="eyebrow">Stavanger</div><h3>SVG ⇄ Warszawa</h3>
+        <div class="flight-row"><div><b>15. sep</b><br><span>SVG → WAW</span></div><div class="flight-time">11:25–13:30</div></div>
+        <div class="flight-row"><div><b>21. sep</b><br><span>WAW → SVG</span></div><div class="flight-time">08:15–10:25</div></div>
+        <div class="chips"><span class="chip">Henrik</span><span class="chip">Eivind</span><span class="chip">Jonas</span></div>
+      </div>
     </div>
-    <div class="card"><div class="eyebrow">Stavanger-gruppen</div><h3>Stavanger → Warszawa</h3>
-      <div class="flight"><div><div class="route">15. september</div><div class="muted small">SVG → Warszawa</div></div><div class="bigtime">11:25 → 13:30</div></div>
-      <div class="flight"><div><div class="route">21. september</div><div class="muted small">Warszawa → SVG</div></div><div class="bigtime">08:15 → 10:25</div></div>
-      <div class="names"><span class="namechip">Henrik</span><span class="namechip">Eivind</span><span class="namechip">Jonas</span></div>
-    </div>
-  </div>
-  <div class="card" style="margin-top:14px"><div class="eyebrow">Base i Warszawa</div><h3>a&o Warszawa Wola</h3><p class="muted">Marcina Kasprzaka 18/20, 01-211 Warszawa · Telefon +48 22 524 41 60</p><div class="actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Marcina+Kasprzaka+18%2F20%2C+Warszawa">Åpne i Google Maps</a><a class="btn" href="tel:+48225244160">Ring hotellet</a></div></div>
-</section>
-
-<section class="view" id="tropp">
-  <div class="section-head"><div><h2>Spillertropp</h2><p>14 spillere · trykk på telefonnummeret for å ringe.</p></div></div>
-  <div class="roster">
-    <div class="person"><strong>Cyryl Krzysztof Klich</strong><span>Kant · <a href="tel:+4746596670">+47 465 96 670</a></span></div>
-    <div class="person"><strong>Eivind Vik Tveit</strong><span>Libero · <a href="tel:+4795820997">+47 958 20 997</a></span></div>
-    <div class="person"><strong>Hermann Kristiansen</strong><span>Opplegger · <a href="tel:+4792299188">+47 922 99 188</a></span></div>
-    <div class="person"><strong>Isak Skjevdal</strong><span>Libero · <a href="tel:+4794093073">+47 940 93 073</a></span></div>
-    <div class="person"><strong>Sturla Nyhammer Myrhol</strong><span>Midt/Kant · <a href="tel:+4746932666">+47 469 32 666</a></span></div>
-    <div class="person"><strong>Martin Trengereid</strong><span>Midt · <a href="tel:+4793823310">+47 938 23 310</a></span></div>
-    <div class="person"><strong>Jonas Øye Tangerås</strong><span>Midt · <a href="tel:+4745035699">+47 450 35 699</a></span></div>
-    <div class="person"><strong>Petter Bratland Bull</strong><span>Midt · <a href="tel:+4792169540">+47 921 69 540</a></span></div>
-    <div class="person"><strong>Amund Remme Røstengen</strong><span>Opplegger · <a href="tel:+4741420656">+47 414 20 656</a></span></div>
-    <div class="person"><strong>Tobias Farestveit Østerbø</strong><span>Diagonal · <a href="tel:+4746922525">+47 469 22 525</a></span></div>
-    <div class="person"><strong>Henrik Bøe Grydeland</strong><span>Opplegger · <a href="tel:+4748381339">+47 483 81 339</a></span></div>
-    <div class="person"><strong>Piotr Dabrowski</strong><span>Midt · <a href="tel:+4795559911">+47 955 59 911</a></span></div>
-    <div class="person"><strong>Thomas Roness</strong><span>Kant · <a href="tel:+4792043477">+47 920 43 477</a></span></div>
-    <div class="person"><strong>Mikael Beckman dos Santos</strong><span>Kant/Diagonal · <a href="tel:+4748384471">+47 483 84 471</a></span></div>
+    <div class="card hotel-strip"><div><div class="eyebrow">Hotell</div><h3>a&o Warszawa Wola</h3><div class="small muted">Marcina Kasprzaka 18/20 · +48 22 524 41 60</div></div><div class="mini-actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Marcina+Kasprzaka+18%2F20%2C+Warszawa">Kart</a><a class="btn" href="tel:+48225244160">Ring</a></div></div>
   </div>
 </section>
 
-<section class="view" id="kamper">
-  <div class="section-head"><div><h2>Turneringskamper</h2><p>Hala Sportowa “Koło” · Obozowa 60 · 18.–20. september.</p></div></div>
-  <div class="card schedule-scroll"><table class="schedule-table"><thead><tr><th>Dato</th><th>Tid</th><th>Kamp</th><th>Bane</th></tr></thead><tbody>
-  <tr><td>Fre. 18.09</td><td><strong>17:30</strong></td><td>Piła – <strong>Norge U20</strong></td><td class="court">2</td></tr>
-  <tr><td>Lør. 19.09</td><td><strong>09:00</strong></td><td><strong>Norge U20</strong> – MOS2</td><td class="court">2</td></tr>
-  <tr><td>Lør. 19.09</td><td><strong>12:00</strong></td><td>Spała – <strong>Norge U20</strong></td><td class="court">2</td></tr>
-  <tr><td>Lør. 19.09</td><td><strong>18:00</strong></td><td>MOS1 – <strong>Norge U20</strong></td><td class="court">3</td></tr>
-  <tr><td>Lør. 19.09</td><td><strong>19:30</strong></td><td>Olsztyn – <strong>Norge U20</strong></td><td class="court">1</td></tr>
-  <tr><td>Søn. 20.09</td><td><strong>09:00</strong></td><td>Bydgoszcz – <strong>Norge U20</strong></td><td class="court">1</td></tr>
-  <tr><td>Søn. 20.09</td><td><strong>12:00</strong></td><td><strong>Norge U20</strong> – Poznań</td><td class="court">2</td></tr>
-  </tbody></table></div>
+<section class="view" id="program">
+  <div class="page">
+    <div class="page-head"><div><div class="eyebrow">Tentativt</div><h2>Program</h2><p>Trening og friendly games. Detaljer oppdateres fortløpende.</p></div></div>
+    <div class="timeline">
+      <div class="card day-row"><div class="day-date"><span>Tirsdag</span>15. sep</div><div class="day-main"><b>Ankomst & innsjekk</b><small>Oslo-gruppen 11:25 · Stavanger-gruppen 13:30 · a&o Warszawa Wola.</small></div><span class="badge b-travel">reise</span></div>
+      <div class="card day-row"><div class="day-date"><span>Onsdag</span>16. sep</div><div class="day-main"><b>10:00–12:00 Trening · Rogalińska 2</b><small>Friendly game på ettermiddagen er fortsatt ikke fastsatt.</small></div><span class="badge b-tba">TBA</span></div>
+      <div class="card day-row"><div class="day-date"><span>Torsdag</span>17. sep</div><div class="day-main"><b>10:00–12:00 Trening · 16:00 Friendly</b><small>Norge U20 – MOS Wola Warsaw · Rogalińska 2.</small></div><span class="badge b-friendly">friendly</span></div>
+      <div class="card day-row"><div class="day-date"><span>Fredag</span>18. sep</div><div class="day-main"><b>Turneringsstart</b><small>17:30 Piła – Norge U20 · bane 2.</small></div><span class="badge b-match">kamp</span></div>
+      <div class="card day-row"><div class="day-date"><span>Lørdag</span>19. sep</div><div class="day-main"><b>4 turneringskamper</b><small>09:00 · 12:00 · 18:00 · 19:30.</small></div><span class="badge b-match">4 kamper</span></div>
+      <div class="card day-row"><div class="day-date"><span>Søndag</span>20. sep</div><div class="day-main"><b>2 kamper & avslutning</b><small>09:00 · 12:00 · turneringsavslutning 15:30.</small></div><span class="badge b-match">2 kamper</span></div>
+      <div class="card day-row"><div class="day-date"><span>Mandag</span>21. sep</div><div class="day-main"><b>Hjemreise</b><small>Stavanger 08:15 · Oslo 12:05.</small></div><span class="badge b-travel">reise</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="turnering">
+  <div class="page">
+    <div class="page-head"><div><div class="eyebrow">PBW 2026</div><h2>Turnering</h2><p>Hala Sportowa “Koło” · Obozowa 60 · 18.–20. september.</p></div></div>
+    <div class="card match-card">
+      <div class="match-headline"><b>🇳🇴 Norge U20 · 7 kamper</b><span class="small muted">Alle i juniorkategorien</span></div>
+      <div class="match-list">
+        <div class="match-row"><div class="match-date">Fre. 18.09</div><div class="match-time">17:30</div><div class="match-teams">Piła – <strong>Norge U20</strong></div><div class="court">Bane 2</div></div>
+        <div class="match-row"><div class="match-date">Lør. 19.09</div><div class="match-time">09:00</div><div class="match-teams"><strong>Norge U20</strong> – MOS2</div><div class="court">Bane 2</div></div>
+        <div class="match-row"><div class="match-date">Lør. 19.09</div><div class="match-time">12:00</div><div class="match-teams">Spała – <strong>Norge U20</strong></div><div class="court">Bane 2</div></div>
+        <div class="match-row"><div class="match-date">Lør. 19.09</div><div class="match-time">18:00</div><div class="match-teams">MOS1 – <strong>Norge U20</strong></div><div class="court">Bane 3</div></div>
+        <div class="match-row"><div class="match-date">Lør. 19.09</div><div class="match-time">19:30</div><div class="match-teams">Olsztyn – <strong>Norge U20</strong></div><div class="court">Bane 1</div></div>
+        <div class="match-row"><div class="match-date">Søn. 20.09</div><div class="match-time">09:00</div><div class="match-teams">Bydgoszcz – <strong>Norge U20</strong></div><div class="court">Bane 1</div></div>
+        <div class="match-row"><div class="match-date">Søn. 20.09</div><div class="match-time">12:00</div><div class="match-teams"><strong>Norge U20</strong> – Poznań</div><div class="court">Bane 2</div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="view" id="steder">
-  <div class="section-head"><div><h2>Lokasjoner</h2><p>De viktigste stedene på turen, med direkte lenker til Google Maps.</p></div></div>
-  <div class="grid g3">
-    <div class="card location-card"><div class="loc-top"><div class="loc-icon">🏨</div><div class="eyebrow">Hotell</div><h3>a&o Warszawa Wola</h3><div class="loc-address">Marcina Kasprzaka 18/20<br>01-211 Warszawa</div><div class="actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=a%26o+Warszawa+Wola">Google Maps</a><a class="btn" href="tel:+48225244160">+48 22 524 41 60</a></div></div><div class="loc-info">24-timers resepsjon, Wi‑Fi og gode kollektivforbindelser. Base for hele oppholdet.</div></div>
-    <div class="card location-card"><div class="loc-top"><div class="loc-icon">🏐</div><div class="eyebrow">Treningshall</div><h3>MOS Wola Warszawa</h3><div class="loc-address">Rogalińska 2<br>01-206 Warszawa</div><div class="actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/gJ1AA34q1aR6oqQY6?g_st=aw">Google Maps</a><a class="btn" href="tel:+48226314989">+48 22 631 49 89</a></div></div><div class="loc-info">Międzyszkolny Ośrodek Sportowy nr 6. Trening onsdag og torsdag formiddag.</div></div>
-    <div class="card location-card"><div class="loc-top"><div class="loc-icon">🏆</div><div class="eyebrow">Turneringshall</div><h3>Hala Sportowa “Koło”</h3><div class="loc-address">Obozowa 60<br>01-423 Warszawa</div><div class="actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/GgPzf3NRAfKqzEqq9?g_st=aw">Google Maps</a></div></div><div class="loc-info">Turneringsarena fredag–søndag. Nær holdeplassene Magistracka / PKP Koło.</div></div>
+  <div class="page">
+    <div class="page-head"><div><div class="eyebrow">Warszawa</div><h2>Steder</h2><p>Hotell, treningshall og turneringshall med direkte kartlenker.</p></div></div>
+    <div class="place-grid">
+      <div class="card place-card"><div class="place-icon">🏨</div><div><div class="eyebrow">Hotell</div><h3>a&o Warszawa Wola</h3><div class="place-address">Marcina Kasprzaka 18/20, 01-211 Warszawa</div><div class="place-note">Base for hele oppholdet · telefon +48 22 524 41 60</div></div><div class="place-actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=a%26o+Warszawa+Wola">Kart</a><a class="btn" href="tel:+48225244160">Ring</a></div></div>
+      <div class="card place-card"><div class="place-icon">🏐</div><div><div class="eyebrow">Trening / friendly</div><h3>MOS Wola Warszawa</h3><div class="place-address">Rogalińska 2, 01-206 Warszawa</div><div class="place-note">Trening onsdag og torsdag · friendly torsdag kl. 16:00.</div></div><div class="place-actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/gJ1AA34q1aR6oqQY6?g_st=aw">Kart</a><a class="btn" href="tel:+48226314989">Ring</a></div></div>
+      <div class="card place-card"><div class="place-icon">🏆</div><div><div class="eyebrow">Turneringshall</div><h3>Hala Sportowa “Koło”</h3><div class="place-address">Obozowa 60, 01-423 Warszawa</div><div class="place-note">Alle turneringskampene fredag–søndag.</div></div><div class="place-actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/GgPzf3NRAfKqzEqq9?g_st=aw">Kart</a></div></div>
+    </div>
   </div>
 </section>
 
 <section class="view" id="transport">
-  <div class="section-head"><div><h2>Transport i Warszawa</h2><p>Praktiske alternativer fra hotellet. Prisene for Uber er veiledende – appen viser faktisk pris før bestilling.</p></div></div>
-  <div class="grid g2">
-    <div class="card transport-card"><div class="eyebrow">Hotel → trening</div><h3>a&o Warszawa Wola → MOS Wola</h3>
-      <div class="mode"><div><strong>🚶 Til fots</strong><div class="small muted">Rogalińska 2 ligger bare ca. 150 m i luftlinje fra hotelladressen.</div></div><div class="price good">Best valg</div></div>
-      <div class="mode"><div><strong>🚕 Uber</strong><div class="small muted">Så kort tur at gange normalt er enklere.</div></div><div class="price">Ikke anbefalt</div></div>
-      <div class="actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Marcina+Kasprzaka+18%2F20,+Warszawa&destination=Rogali%C5%84ska+2,+Warszawa&travelmode=walking">Vis gangrute</a></div>
+  <div class="page">
+    <div class="page-head"><div><div class="eyebrow">Fra hotellet</div><h2>Transport</h2><p>Kortversjonen for gruppen. Live-rute og pris sjekkes ved avreise.</p></div></div>
+    <div class="transport-grid">
+      <div class="card route-card"><div><div class="eyebrow">Til trening</div><h3>a&o Wola → Rogalińska 2</h3><div class="route-lines"><span class="route-pill good">🚶 Gå – best valg</span><span class="route-pill">Svært kort avstand</span></div></div><div><div class="route-price">Til fots</div><a class="btn primary" style="margin-top:5px" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Marcina+Kasprzaka+18%2F20,+Warszawa&destination=Rogali%C5%84ska+2,+Warszawa&travelmode=walking">Rute</a></div></div>
+      <div class="card route-card"><div><div class="eyebrow">Til turnering</div><h3>a&o Wola → Hala “Koło”</h3><div class="route-lines"><span class="route-pill">🚋 Kollektivt 4,40 zł</span><span class="route-pill">🚕 Uber ca. 20–35 zł</span></div></div><div><div class="route-price">Obozowa 60</div><a class="btn primary" style="margin-top:5px" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Marcina+Kasprzaka+18%2F20,+Warszawa&destination=Obozowa+60,+Warszawa&travelmode=transit">Rute</a></div></div>
+      <div class="card ticket-card"><div class="ticket"><b>75 min</b>4,40 zł ordinær</div><div class="ticket"><b>Gruppe ≤10</b>22 zł / 75 min</div><div class="ticket"><b>Døgn / 72 t</b>15 zł / 36 zł</div></div>
     </div>
-    <div class="card transport-card"><div class="eyebrow">Hotel → turnering</div><h3>a&o Warszawa Wola → Hala “Koło”</h3>
-      <div class="mode"><div><strong>🚋 Kollektivt</strong><div class="small muted">Trikk/buss er normalt et godt gruppealternativ. Bruk Jakdojade eller Google Maps for live-rute.</div></div><div class="price">4,40 zł*</div></div>
-      <div class="mode"><div><strong>🚕 Uber</strong><div class="small muted">Warszawa-gjennomsnittet for en 19-minutters UberX-tur er rundt 33 zł. Denne turen kan være kortere, men pris varierer med trafikk og etterspørsel.</div></div><div class="price">ca. 20–35 zł**</div></div>
-      <div class="actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Marcina+Kasprzaka+18%2F20,+Warszawa&destination=Obozowa+60,+Warszawa&travelmode=transit">Kollektivrute</a><a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Marcina+Kasprzaka+18%2F20,+Warszawa&destination=Obozowa+60,+Warszawa&travelmode=driving">Bilrute</a></div>
-    </div>
-  </div>
-  <div class="grid g2" style="margin-top:14px">
-    <div class="card"><div class="eyebrow">Billetter</div><h3>ZTM Warszawa</h3><p class="muted">75-minuttersbillett i sone 1 koster <strong>4,40 zł</strong> ordinært. Det finnes også en 75-minutters gruppebillett for inntil 10 personer til <strong>22 zł</strong>, 24-timersbillett til 15 zł og 72-timersbillett til 36 zł.</p><p class="small muted">* Prisnivå kontrollert mot Warszawas kollektivinformasjon i september 2026.</p></div>
-    <div class="card"><div class="eyebrow">Praktisk råd</div><h3>Gruppe på 14 personer</h3><p class="muted">Til trening: gå samlet. Til turneringshallen: kollektivt er normalt billigst og enklest for hele gruppen. Ved tidlige kamper eller stramt tidsskjema kan flere Uber/Taxi-biler være et godt alternativ.</p><p class="small muted">** Uber viser forhåndspris ved bestilling. Prisene på siden er derfor bare et planleggingsanslag.</p></div>
   </div>
 </section>
-</main>
-<div class="footer">Norge U20 · Warszawa 2026 · Program og reisefakta kan oppdateres fortløpende.</div>
+
+</div>
+
+<div class="nav-wrap"><nav class="nav" id="nav" aria-label="Hovedmeny">
+  <button class="active" data-view="hjem"><span class="nav-ico">🏠</span><span>Hjem</span></button>
+  <button data-view="reise"><span class="nav-ico">✈️</span><span>Reise</span></button>
+  <button data-view="program"><span class="nav-ico">📅</span><span>Program</span></button>
+  <button data-view="turnering"><span class="nav-ico">🏐</span><span>Turnering</span></button>
+  <button data-view="steder"><span class="nav-ico">📍</span><span>Steder</span></button>
+  <button data-view="transport"><span class="nav-ico">🚋</span><span>Transport</span></button>
+</nav></div>
+
+<div class="modal" id="rosterModal" aria-hidden="true">
+  <div class="sheet">
+    <div class="sheet-head"><div><div class="eyebrow">Norge U20 herrer</div><h3>Spillertropp · 14 spillere</h3></div><button class="close" id="closeRoster" aria-label="Lukk">✕</button></div>
+    <div class="roster">
+      <div class="person"><strong>Cyryl Krzysztof Klich</strong><span>Kant · <a href="tel:+4746596670">+47 465 96 670</a></span></div>
+      <div class="person"><strong>Eivind Vik Tveit</strong><span>Libero · <a href="tel:+4795820997">+47 958 20 997</a></span></div>
+      <div class="person"><strong>Hermann Kristiansen</strong><span>Opplegger · <a href="tel:+4792299188">+47 922 99 188</a></span></div>
+      <div class="person"><strong>Isak Skjevdal</strong><span>Libero · <a href="tel:+4794093073">+47 940 93 073</a></span></div>
+      <div class="person"><strong>Sturla Nyhammer Myrhol</strong><span>Midt/Kant · <a href="tel:+4746932666">+47 469 32 666</a></span></div>
+      <div class="person"><strong>Martin Trengereid</strong><span>Midt · <a href="tel:+4793823310">+47 938 23 310</a></span></div>
+      <div class="person"><strong>Jonas Øye Tangerås</strong><span>Midt · <a href="tel:+4745035699">+47 450 35 699</a></span></div>
+      <div class="person"><strong>Petter Bratland Bull</strong><span>Midt · <a href="tel:+4792169540">+47 921 69 540</a></span></div>
+      <div class="person"><strong>Amund Remme Røstengen</strong><span>Opplegger · <a href="tel:+4741420656">+47 414 20 656</a></span></div>
+      <div class="person"><strong>Tobias Farestveit Østerbø</strong><span>Diagonal · <a href="tel:+4746922525">+47 469 22 525</a></span></div>
+      <div class="person"><strong>Henrik Bøe Grydeland</strong><span>Opplegger · <a href="tel:+4748381339">+47 483 81 339</a></span></div>
+      <div class="person"><strong>Piotr Dabrowski</strong><span>Midt · <a href="tel:+4795559911">+47 955 59 911</a></span></div>
+      <div class="person"><strong>Thomas Roness</strong><span>Kant · <a href="tel:+4792043477">+47 920 43 477</a></span></div>
+      <div class="person"><strong>Mikael Beckman dos Santos</strong><span>Kant/Diagonal · <a href="tel:+4748384471">+47 483 84 471</a></span></div>
+    </div>
+  </div>
+</div>
+
 <script>
-const buttons=[...document.querySelectorAll('#nav button')];const views=[...document.querySelectorAll('.view')];
-function show(id){buttons.forEach(b=>b.classList.toggle('active',b.dataset.view===id));views.forEach(v=>v.classList.toggle('active',v.id===id));history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'});}
+const buttons=[...document.querySelectorAll('#nav button')];
+const views=[...document.querySelectorAll('.view')];
+function show(id){
+  buttons.forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+  views.forEach(v=>v.classList.toggle('active',v.id===id));
+  history.replaceState(null,'','#'+id);
+}
 buttons.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
-const initial=location.hash.slice(1);if(initial&&document.getElementById(initial)){buttons.forEach(b=>b.classList.toggle('active',b.dataset.view===initial));views.forEach(v=>v.classList.toggle('active',v.id===initial));}
+document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.jump)));
+const initial=location.hash.slice(1);if(initial&&document.getElementById(initial))show(initial);
+const modal=document.getElementById('rosterModal');
+const openRoster=()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false')};
+const closeRoster=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true')};
+document.getElementById('openRoster').addEventListener('click',openRoster);
+document.getElementById('closeRoster').addEventListener('click',closeRoster);
+modal.addEventListener('click',e=>{if(e.target===modal)closeRoster()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeRoster()});
 </script>
-</body></html>
+</body>
+</html>
