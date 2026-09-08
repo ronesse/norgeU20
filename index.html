@@ -75,6 +75,70 @@ a{color:inherit}.app{height:100dvh;min-height:100vh;overflow:hidden;padding-bott
 @media(max-height:700px) and (max-width:760px){
   :root{--navh:58px}.page{padding-top:7px;gap:5px}.page-head h2{font-size:1.12rem}.page-head p{display:none}.nav button{font-size:.48rem}.nav-ico{font-size:.92rem}.home-stats{grid-template-columns:repeat(4,1fr)}.stat{padding:6px}.stat b{font-size:.72rem}.stat span{font-size:.5rem}.hero-copy p{font-size:.72rem}.hero-copy h1{font-size:2rem}.travel-card{padding:6px}.chip{font-size:.51rem}.day-row{padding:4px 6px}.day-main small{display:none}.place-note{display:none}.route-pill{font-size:.52rem}
 }
+
+
+/* 2026 mobile refresh */
+:root{
+  --bg:#eef3f9;--card:rgba(255,255,255,.94);--line:#d9e3ef;
+  --shadow:0 10px 30px rgba(8,27,49,.09),0 1px 2px rgba(8,27,49,.04);
+}
+body{background:radial-gradient(circle at 100% 0,#dbe9f7 0,transparent 30%),linear-gradient(180deg,#f7f9fc 0%,#edf3f9 100%)}
+.page{padding:18px 18px 14px;gap:14px}
+.page-head{padding:2px 2px 0}.page-head h2{font-size:clamp(1.65rem,4.8vw,2.35rem);font-weight:950;letter-spacing:-.045em}.page-head p{font-size:.88rem;max-width:680px}
+.card{border-color:rgba(205,218,232,.88);box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+.eyebrow{font-size:.68rem;letter-spacing:.14em;color:#1767ad}
+
+/* Fill each screen more confidently */
+.travel-grid,.timeline,.place-grid,.transport-grid,.match-card{flex:1}
+.travel-card,.place-card,.route-card,.ticket-card,.day-row{background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(248,251,255,.94))}
+
+/* Program becomes a true mobile agenda */
+.timeline{gap:8px;grid-template-rows:repeat(7,minmax(0,1fr))}
+.day-row{position:relative;grid-template-columns:88px minmax(0,1fr) auto;gap:12px;padding:11px 13px;border-radius:20px;overflow:hidden}
+.day-row:before{content:"";position:absolute;left:0;top:13px;bottom:13px;width:4px;border-radius:0 8px 8px 0;background:#b9c9da}
+.day-row:nth-child(2):before,.day-row:nth-child(3):before{background:#1c8b68}.day-row:nth-child(4):before,.day-row:nth-child(5):before,.day-row:nth-child(6):before{background:#7650bd}.day-row:last-child:before,.day-row:first-child:before{background:#6f7f90}
+.day-date{font-size:1rem;letter-spacing:-.025em}.day-date span{font-size:.6rem;letter-spacing:.13em;margin-bottom:4px}
+.day-main b{font-size:.9rem}.day-main small{font-size:.7rem;margin-top:4px}.day-main time{display:inline-block;min-width:84px;color:var(--navy);font-variant-numeric:tabular-nums}
+.activity-line{display:flex;align-items:baseline;gap:8px;min-width:0}.activity-line b{white-space:nowrap}.activity-line small{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.activity-line+.activity-line{margin-top:7px;padding-top:7px;border-top:1px solid #e6edf5}.friendly-line b{color:#126c51}
+.featured-day{background:linear-gradient(145deg,#ffffff 15%,#ecfbf5 100%);border-color:#bfe5d5;box-shadow:0 12px 30px rgba(24,120,93,.12)}
+.badge{font-size:.57rem;padding:5px 8px}
+
+/* Travel */
+.travel-card{border-radius:22px;padding:16px}.travel-card h3{font-size:1.1rem}.flight-row{padding:11px 0}.flight-row b,.flight-time{font-size:1rem}.flight-row span{font-size:.72rem}.chip{padding:5px 8px;background:white}.hotel-strip{border-radius:20px;padding:13px 15px}
+
+/* Tournament */
+.match-card{border-radius:22px}.match-headline{padding:13px 15px;background:linear-gradient(90deg,#0a2b4d,#154d7f);color:#fff;border:0}.match-headline .muted{color:rgba(255,255,255,.72)}
+.match-row{padding:10px 13px;grid-template-columns:78px 54px 1fr 48px}.match-row:nth-child(even){background:rgba(240,246,252,.58)}.match-time{font-size:1rem}.match-teams{font-size:.84rem}.court{font-size:.68rem}
+
+/* Places / Transport */
+.place-grid{gap:10px}.place-card{border-radius:22px;padding:14px 15px;grid-template-columns:48px 1fr auto}.place-icon{width:44px;height:44px;border-radius:15px;background:linear-gradient(145deg,#eef5fd,#ddebf8);font-size:1.3rem}.place-card h3{font-size:1rem}.place-address{font-size:.75rem}.place-note{font-size:.68rem}
+.transport-grid{gap:10px}.route-card{border-radius:22px;padding:14px 15px}.route-card h3{font-size:1rem}.route-pill{padding:5px 8px}.ticket-card{border-radius:18px;padding:11px 13px}
+
+/* Bottom nav feels app-like */
+.nav-wrap{background:rgba(250,252,255,.9);border-top:1px solid rgba(203,215,228,.85);box-shadow:0 -10px 35px rgba(8,27,49,.10)}
+.nav{padding:7px 7px 5px;gap:4px}.nav button{border-radius:14px;font-size:.58rem;transition:.18s ease}.nav button.active{background:linear-gradient(145deg,#0d3156,#155487);color:#fff;box-shadow:0 5px 15px rgba(13,49,86,.2)}.nav-ico{font-size:1.12rem}
+
+/* Home polish */
+.home{background:radial-gradient(circle at 105% -10%,rgba(71,126,177,.55) 0,transparent 36%),linear-gradient(145deg,#06182b 0%,#0a2948 64%,#0d3d69 100%)}
+.home .page{padding:22px 18px 16px}.hero-copy h1{text-wrap:balance}.stat{border-radius:18px;background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.15);padding:13px 14px}.ghost-btn{border-radius:14px;padding:10px 13px}
+
+@media(max-width:760px){
+  :root{--navh:68px}
+  .page{padding:13px 11px 10px;gap:9px}.page-head h2{font-size:1.48rem}.page-head p{font-size:.72rem;line-height:1.2}
+  .timeline{gap:6px}.day-row{grid-template-columns:70px minmax(0,1fr) auto;gap:7px;padding:8px 9px;border-radius:16px}.day-row:before{top:10px;bottom:10px;width:3px}.day-date{font-size:.8rem}.day-date span{font-size:.5rem;margin-bottom:2px}.day-main b{font-size:.75rem}.day-main small{font-size:.59rem}.day-main time{min-width:70px}.activity-line{gap:5px}.activity-line+.activity-line{margin-top:4px;padding-top:4px}.badge{font-size:.49rem;padding:4px 6px}
+  .travel-card{padding:10px;border-radius:17px}.travel-card h3{font-size:.88rem}.flight-row{padding:6px 0}.flight-row b,.flight-time{font-size:.8rem}.chip{padding:3px 5px}.hotel-strip{padding:8px 9px;border-radius:16px}
+  .match-card{border-radius:17px}.match-headline{padding:9px 10px}.match-row{grid-template-columns:61px 42px 1fr 37px;padding:6px 8px}.match-time{font-size:.8rem}.match-teams{font-size:.7rem}
+  .place-card{border-radius:17px;padding:9px 10px;grid-template-columns:36px 1fr auto}.place-icon{width:34px;height:34px;border-radius:11px;font-size:1rem}.place-card h3{font-size:.8rem}.place-address{font-size:.61rem}.place-note{font-size:.56rem}
+  .route-card{border-radius:17px;padding:9px 10px}.route-card h3{font-size:.8rem}.route-pill{padding:3px 5px}.ticket-card{border-radius:15px;padding:7px 8px}
+  .home .page{padding:15px 12px 11px}.stat{border-radius:15px;padding:9px 10px}.ghost-btn{border-radius:12px;padding:8px 10px}
+  .nav{padding:5px 4px 3px}.nav button{border-radius:12px}
+}
+
+@media(max-width:430px) and (min-height:760px){
+  .page-head{padding-top:3px}.timeline{gap:7px}.day-row{padding-top:9px;padding-bottom:9px}.page-head p{display:block}
+}
+
 </style>
 </head>
 <body>
@@ -127,7 +191,7 @@ a{color:inherit}.app{height:100dvh;min-height:100vh;overflow:hidden;padding-bott
     <div class="timeline">
       <div class="card day-row"><div class="day-date"><span>Tirsdag</span>15. sep</div><div class="day-main"><b>Ankomst & innsjekk</b><small>Oslo-gruppen 11:25 · Stavanger-gruppen 13:30 · a&o Warszawa Wola.</small></div><span class="badge b-travel">reise</span></div>
       <div class="card day-row"><div class="day-date"><span>Onsdag</span>16. sep</div><div class="day-main"><b>10:00–12:00 Trening · Rogalińska 2</b><small>Friendly game på ettermiddagen er fortsatt ikke fastsatt.</small></div><span class="badge b-tba">TBA</span></div>
-      <div class="card day-row"><div class="day-date"><span>Torsdag</span>17. sep</div><div class="day-main"><b>10:00–12:00 Trening · 16:00 Friendly</b><small>Norge U20 – MOS Wola Warsaw · Rogalińska 2.</small></div><span class="badge b-friendly">friendly</span></div>
+      <div class="card day-row featured-day"><div class="day-date"><span>Torsdag</span>17. sep</div><div class="day-main"><div class="activity-line"><b><time>10:00–12:00</time> Trening</b><small>Rogalińska 2</small></div><div class="activity-line friendly-line"><b><time>16:00–18:00</time> Friendly game</b><small>Norge U20 vs WOS Wola Warsaw · Rogalińska 2</small></div></div><span class="badge b-friendly">friendly</span></div>
       <div class="card day-row"><div class="day-date"><span>Fredag</span>18. sep</div><div class="day-main"><b>Turneringsstart</b><small>17:30 Piła – Norge U20 · bane 2.</small></div><span class="badge b-match">kamp</span></div>
       <div class="card day-row"><div class="day-date"><span>Lørdag</span>19. sep</div><div class="day-main"><b>4 turneringskamper</b><small>09:00 · 12:00 · 18:00 · 19:30.</small></div><span class="badge b-match">4 kamper</span></div>
       <div class="card day-row"><div class="day-date"><span>Søndag</span>20. sep</div><div class="day-main"><b>2 kamper & avslutning</b><small>09:00 · 12:00 · turneringsavslutning 15:30.</small></div><span class="badge b-match">2 kamper</span></div>
@@ -159,7 +223,7 @@ a{color:inherit}.app{height:100dvh;min-height:100vh;overflow:hidden;padding-bott
     <div class="page-head"><div><div class="eyebrow">Warszawa</div><h2>Steder</h2><p>Hotell, treningshall og turneringshall med direkte kartlenker.</p></div></div>
     <div class="place-grid">
       <div class="card place-card"><div class="place-icon">🏨</div><div><div class="eyebrow">Hotell</div><h3>a&o Warszawa Wola</h3><div class="place-address">Marcina Kasprzaka 18/20, 01-211 Warszawa</div><div class="place-note">Base for hele oppholdet · telefon +48 22 524 41 60</div></div><div class="place-actions"><a class="btn primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=a%26o+Warszawa+Wola">Kart</a><a class="btn" href="tel:+48225244160">Ring</a></div></div>
-      <div class="card place-card"><div class="place-icon">🏐</div><div><div class="eyebrow">Trening / friendly</div><h3>MOS Wola Warszawa</h3><div class="place-address">Rogalińska 2, 01-206 Warszawa</div><div class="place-note">Trening onsdag og torsdag · friendly torsdag kl. 16:00.</div></div><div class="place-actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/gJ1AA34q1aR6oqQY6?g_st=aw">Kart</a><a class="btn" href="tel:+48226314989">Ring</a></div></div>
+      <div class="card place-card"><div class="place-icon">🏐</div><div><div class="eyebrow">Trening / friendly</div><h3>MOS Wola Warszawa</h3><div class="place-address">Rogalińska 2, 01-206 Warszawa</div><div class="place-note">Trening onsdag og torsdag · friendly torsdag kl. 16:00–18:00.</div></div><div class="place-actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/gJ1AA34q1aR6oqQY6?g_st=aw">Kart</a><a class="btn" href="tel:+48226314989">Ring</a></div></div>
       <div class="card place-card"><div class="place-icon">🏆</div><div><div class="eyebrow">Turneringshall</div><h3>Hala Sportowa “Koło”</h3><div class="place-address">Obozowa 60, 01-423 Warszawa</div><div class="place-note">Alle turneringskampene fredag–søndag.</div></div><div class="place-actions"><a class="btn primary" target="_blank" href="https://maps.app.goo.gl/GgPzf3NRAfKqzEqq9?g_st=aw">Kart</a></div></div>
     </div>
   </div>
