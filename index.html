@@ -464,6 +464,41 @@ body{background:linear-gradient(180deg,#eaf0f7 0,#f7f9fc 35%,#eef3f8 100%)}
 .compact-wed{cursor:pointer}.compact-wed .wed-summary{display:grid;gap:2px}.compact-wed .wed-summary b{font-size:clamp(15px,3.8vw,20px);line-height:1.08}.compact-wed .wed-summary small{font-size:clamp(11px,2.7vw,14px);color:#6d7b8d}.compact-wed .friendly-title{margin-top:5px;color:#08794f}.tap-hint{font-size:11px;font-weight:800;color:#1475c9;margin-top:3px}.wed-details{display:none;margin-top:8px;padding-top:8px;border-top:1px solid #d9e3ed;gap:8px}.compact-wed.expanded .wed-details{display:grid}.compact-wed.expanded .wed-summary .tap-hint{display:none}.detail-box{display:grid;gap:3px;font-size:13px}.detail-box strong{font-size:14px}.detail-box span{color:#445469}.detail-box .activity-actions{margin-top:4px}.close-hint{text-align:center}.compact-wed.expanded{z-index:20;position:relative;box-shadow:0 14px 36px rgba(4,35,63,.2)}
 @media(max-height:760px){.compact-wed .wed-summary b{font-size:14px}.compact-wed .wed-summary small{font-size:10px}.tap-hint{font-size:9px}}
 </style>
+
+<style>
+/* Program: expanded day cards must show the complete day */
+#program .day-card.open,
+#program .day-card.active,
+#program .day-card.expanded,
+#program .program-day.open,
+#program .program-day.active,
+#program .program-day.expanded,
+#program .day-detail.open,
+#program .day-details.open,
+#program .day-details.active,
+#program .day-details.expanded {
+  max-height:none !important;
+  height:auto !important;
+  overflow:visible !important;
+}
+#program .day-card.open .day-details,
+#program .day-card.active .day-details,
+#program .day-card.expanded .day-details,
+#program .program-day.open .day-details,
+#program .program-day.active .day-details,
+#program .program-day.expanded .day-details {
+  max-height:none !important;
+  height:auto !important;
+  overflow:visible !important;
+}
+#program.view.active, #program .page {
+  overflow-y:auto !important;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+#program .page { padding-bottom:calc(var(--navh,64px) + 14px) !important; }
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -520,7 +555,8 @@ body{background:linear-gradient(180deg,#eaf0f7 0,#f7f9fc 35%,#eef3f8 100%)}
       <div class="match-headline"><b><span class="nor-flag inline-nor-flag" aria-hidden="true"><i></i></span>Norge U20 · 7 kamper</b><span class="small muted">Alle i juniorkategorien</span></div>
       <div class="match-list">
         <div class="match-day-title">Fredag 18. september</div>
-        <div class="match-row"><div class="match-date">Fre. 18.09</div><div class="match-time">17:30</div><div class="match-teams"><button type="button" class="match-team" data-opp="pila" aria-label="Scouting Joker Piła"><span class="team-name">Joker Piła</span><span class="team-logo"><img src="https://sportowcydzieciom.pl/files/1238_sms21_jpg.png" alt="Joker Piła"></span></button><span class="match-sep">–</span><span class="match-team"><span class="team-name">Norge U20</span><span class="team-logo nor-flag" aria-label="Norge"><i></i></span></span></div><div class="court">Bane 2</div></div>
+        <div class="match-row"><div class="match-date">Fre. 18.09</div><div class="match-time">17:30</div><div class="match-teams"><button type="button" class="match-team" data-opp="pila" aria-label="Scouting Joker Piła"><span class="team-name">Joker Piła</span><span class="team-logo"><img src="https://sportowcydzieciom.pl/files/1238_sms21_jpg.png" alt="Joker Piła"></span></button><span class="match-sep">–</span><span class="match-team"><span class="team-name">Norge U20</span><span class="team-logo nor-flag" aria-label="Norge"><i></i></span></span></div>
+<div class="detail-row"><b>20:00</b><span>🍽️ Middag</span></div><div class="court">Bane 2</div></div>
         <div class="match-day-title">Lørdag 19. september</div>
         <div class="match-row"><div class="match-date">Lør. 19.09</div><div class="match-time">09:00</div><div class="match-teams"><span class="match-team"><span class="team-name">Norge U20</span><span class="team-logo nor-flag" aria-label="Norge"><i></i></span></span><span class="match-sep">–</span><button type="button" class="match-team" data-opp="mos2" aria-label="Scouting MOS Wola Warszawa 2"><span class="team-name">MOS Wola 2</span><span class="team-logo"><img src="https://volleybox.net/media/upload/teams/big_1697548526PdgS2.png" alt="MOS Wola"></span></button></div><div class="court">Bane 2</div></div>
         <div class="match-row"><div class="match-date">Lør. 19.09</div><div class="match-time">12:00</div><div class="match-teams"><button type="button" class="match-team" data-opp="spala" aria-label="Scouting SMS Spała"><span class="team-name">SMS Spała</span><span class="team-logo"><img src="https://centrumaugustow.pl/wp-content/uploads/2022/11/SMS-PZPS-Spala-II-LOGO.png" alt="SMS Spała"></span></button><span class="match-sep">–</span><span class="match-team"><span class="team-name">Norge U20</span><span class="team-logo nor-flag" aria-label="Norge"><i></i></span></span></div><div class="court">Bane 2</div></div>
