@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Norway U20 – Meal Schedule</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f3f6fa;color:#0b1f3a;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:720px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#071b35,#123e72);color:white;border-radius:22px;padding:22px;margin-bottom:14px;box-shadow:0 10px 28px #0b1f3a22}
+.hero small{font-weight:800;letter-spacing:.12em;color:#dbe8f8}.hero h1{margin:5px 0 2px;font-size:28px}.hero p{margin:0;opacity:.8}
+.day{background:white;border-radius:18px;padding:13px 15px;margin:10px 0;box-shadow:0 4px 15px #0b1f3a12}
+.date{font-size:16px;font-weight:850;margin-bottom:8px;border-bottom:1px solid #e7edf5;padding-bottom:7px}
+.meal{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:center;padding:7px 0}
+.time{font-size:18px;font-weight:900;color:#123e72}
+.name{font-size:17px;font-weight:700}
+.note{margin-top:14px;padding:12px 14px;border-radius:14px;background:#e9f0f8;font-size:14px}
+@media (max-height:650px) and (orientation:landscape){
+.wrap{max-width:1000px;padding:10px;display:grid;grid-template-columns:240px 1fr;gap:10px}
+.hero{margin:0;padding:16px}.hero h1{font-size:22px}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.day{margin:0;padding:9px 11px}.date{font-size:13px}.meal{padding:3px 0;grid-template-columns:50px 1fr}.time,.name{font-size:14px}
+.note{grid-column:1/-1;margin-top:0}
+}
+@media print{body{background:white}.wrap{max-width:none}.hero,.day{box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <small>NORWAY U20 • WARSAW 2026</small>
+    <h1>Meal Schedule</h1>
+    <p>15–21 September 2026</p>
+  </header>
+  <section class="days">
+    <div class="day"><div class="date">Tuesday, 15 September</div>
+      <div class="meal"><div class="time">19:00</div><div class="name">Dinner</div></div>
+    </div>
+    <div class="day"><div class="date">Wednesday, 16 September</div>
+      <div class="meal"><div class="time">08:00</div><div class="name">Breakfast</div></div>
+      <div class="meal"><div class="time">13:00</div><div class="name">Lunch</div></div>
+      <div class="meal"><div class="time">17:30</div><div class="name">Dinner</div></div>
+    </div>
+    <div class="day"><div class="date">Thursday, 17 September</div>
+      <div class="meal"><div class="time">08:00</div><div class="name">Breakfast</div></div>
+      <div class="meal"><div class="time">13:00</div><div class="name">Lunch</div></div>
+      <div class="meal"><div class="time">18:30</div><div class="name">Dinner</div></div>
+    </div>
+    <div class="day"><div class="date">Friday, 18 September</div>
+      <div class="meal"><div class="time">09:00</div><div class="name">Breakfast</div></div>
+      <div class="meal"><div class="time">14:00</div><div class="name">Lunch</div></div>
+    </div>
+    <div class="day"><div class="date">Saturday, 19 September</div>
+      <div class="meal"><div class="time">06:40</div><div class="name">Breakfast</div></div>
+      <div class="meal"><div class="time">13:00</div><div class="name">Lunch</div></div>
+      <div class="meal"><div class="time">21:00</div><div class="name">Dinner</div></div>
+    </div>
+    <div class="day"><div class="date">Sunday, 20 September</div>
+      <div class="meal"><div class="time">06:40</div><div class="name">Breakfast</div></div>
+    </div>
+    <div class="note"><strong>Monday, 21 September:</strong> No meals currently scheduled at the hotel.</div>
+  </section>
+</main>
+</body>
+</html>
